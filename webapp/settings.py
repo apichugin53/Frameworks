@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
+    'pillow',
+    'accounts',
+    'dogs',
 ]
 
 MIDDLEWARE = [
@@ -80,12 +83,12 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'HOST': env('DATABASE_HOST'),
-        'PORT': env('DATABASE_PORT', default=''),
-        'NAME': env('DATABASE_NAME'),
-        'USER': env('DATABASE_USER', default=''),
-        'PASSWORD': env('DATABASE_PASSWORD', default=''),
+        'ENGINE': 'mssql',  # или 'sql_server.pyodbc'
+        'NAME': 'apich',
+        'USER': 'apich',
+        'PASSWORD': '',
+        'HOST': 'LAPTOP-L4LJUF6E\SQLEXPRESS',
+        'PORT': '',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
         }
