@@ -42,10 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core.apps.CoreConfig',
     'users.apps.UsersConfig',
-    'pillow',
-    'accounts',
-    'dogs',
+    'dogs.apps.DogsConfig'
 ]
 
 MIDDLEWARE = [
@@ -83,18 +82,19 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',  # или 'sql_server.pyodbc'
-        'NAME': 'apich',
-        'USER': 'apich',
-        'PASSWORD': '',
-        'HOST': 'LAPTOP-L4LJUF6E\SQLEXPRESS',
-        'PORT': '',
+        'ENGINE': 'mssql',
+        'HOST': env('DATABASE_HOST'),
+        'PORT': env('DATABASE_PORT', default=''),
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER', default=''),
+        'PASSWORD': env('DATABASE_PASSWORD', default=''),
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',
         }
     }
 }
 
+AUTH_USER_MODEL = 'users.User'
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
@@ -131,3 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"

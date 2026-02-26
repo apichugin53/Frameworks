@@ -1,3 +1,4 @@
 Django
 django-environ
 git+https://github.com/microsoft/mssql-django.git
+pillow

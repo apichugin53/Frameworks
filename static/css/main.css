@@ -1,0 +1,49 @@
+:root {
+  box-sizing: border-box;
+  font-size: 16px;
+  height: 100dvh;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  margin: 20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+
+.menu {
+  padding: 16px 16px;
+}
+
+.menu:hover {
+  transform: scale(1.05);
+}
+
+.logo {
+  width: 32px;
+  padding: 8px 16px;
+}

@@ -1,25 +1,13 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
-class CustomUser(AbstractUser):
-    avatar = models.ImageField(
-        upload_to='avatars/',
-        blank=True,
-        null=True,
-        verbose_name='Аватар'
-    )
-    birth_date = models.DateField(
-        blank=True,
-        null=True,
-        verbose_name='Дата рождения'
-    )
-    phone = models.CharField(
-        max_length=20,
-        blank=True,
-        null=True,
-        verbose_name='Телефон'
-    )
+class User(AbstractUser):
+    email = models.EmailField(_("email address"), unique=True)
+    phone = models.CharField(_("phone number"), max_length=20, blank=True)
+    avatar = models.ImageField(_("avatar"), upload_to="users/", blank=True)
 
     class Meta:
-        verbose_name = 'Пользователь'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = _("user")
+        verbose_name_plural = _("users")
+        ordering = ("username",)

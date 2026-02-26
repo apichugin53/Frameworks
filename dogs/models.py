@@ -1,56 +1,29 @@
 from django.db import models
-from accounts.models import CustomUser
+from django.utils.translation import gettext_lazy as _
+
 
 class Breed(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Название породы')
-    description = models.TextField(blank=True, verbose_name='Описание')
-    size = models.CharField(
-        max_length=20,
-        choices=[
-            ('small', 'Маленькая'),
-            ('medium', 'Средняя'),
-            ('large', 'Большая'),
-        ],
-        verbose_name='Размер'
-    )
-
-    class Meta:
-        verbose_name = 'Порода'
-        verbose_name_plural = 'Породы'
+    name = models.CharField(_('breed name'), max_length=64)
+    description = models.CharField(_('description'), max_length=256)
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = _('breed')
+        verbose_name_plural = _('breeds')
+        ordering = ('name',)
+
 
 class Dog(models.Model):
-    name = models.CharField(max_length=100, verbose_name='Кличка')
-    breed = models.ForeignKey(
-        Breed,
-        on_delete=models.CASCADE,
-        verbose_name='Порода'
-    )
-    age = models.PositiveIntegerField(verbose_name='Возраст')
-    color = models.CharField(max_length=50, verbose_name='Окрас')
-    weight = models.DecimalField(
-        max_digits=5,
-        decimal_places=2,
-        verbose_name='Вес (кг)'
-    )
-    owner = models.ForeignKey(
-        CustomUser,
-        on_delete=models.CASCADE,
-        verbose_name='Владелец'
-    )
-    photo = models.ImageField(
-        upload_to='dogs_photos/',
-        blank=True,
-        null=True,
-        verbose_name='Фото'
-    )
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Собака'
-        verbose_name_plural = 'Собаки'
+    name = models.CharField(_('dog name'), max_length=64)
+    breed = models.ForeignKey(Breed, on_delete=models.CASCADE)
+    photo = models.ImageField(_('photo'), upload_to='dogs/', null=True)
 
     def __str__(self):
-        return f'{self.name} ({self.breed.name})'
+        return f'{self.breed} {self.name}'
+
+    class Meta:
+        verbose_name = _('dog')
+        verbose_name_plural = _('dogs')
+        ordering = ('name', 'breed',)
