@@ -1,6 +1,7 @@
 {% extends 'dogs/layout.html' %}
 {% block content %}
-
-    Описание породы {{ id }}
-
+    <div class="mt-3">
+        <h3>{{ breed.name }}</h3>
+        <p>{{ breed.description }}</p>
+    </div>
 {% endblock %}
