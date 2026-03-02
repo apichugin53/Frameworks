@@ -34,8 +34,11 @@ def dog_create(request):
         if form.is_valid():
             dog = form.save()
             return redirect('dogs:dog_details', dog.id)
+    else:
+        form = DogForm()
     context = {
-        'form': DogForm(),
+        'title': 'Добавить питомца',
+        'form': form,
         'action_url': reverse('dogs:dog_create'),
         'action_text': 'Добавить'
     }
@@ -49,8 +52,11 @@ def dog_update(request, pk_id):
         if form.is_valid():
             form.save()
             return redirect('dogs:dog_details', dog.id)
+    else:
+        form = DogForm(instance=dog)
     context = {
-        'form': DogForm(instance=dog),
+        'title': 'Изменить питомца',
+        'form': form,
         'action_url': reverse('dogs:dog_update', args=[pk_id]),
         'action_text': 'Обновить'
     }

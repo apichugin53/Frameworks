@@ -25,6 +25,7 @@ from webapp import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('dogs.urls', namespace='dogs')),
+    path('users/', include('users.urls', namespace='users')),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.ico'), name='favicon'),
 ]
 

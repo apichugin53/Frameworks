@@ -9,9 +9,6 @@ from dogs.models import Dog
 class DogForm(ModelForm):
     photo = FileField(label='Фото', required=False, widget=FileInput(attrs={'class': 'form-control'}))
 
-    def as_div(self):
-        return SafeString(super().as_div().replace("<div>", "<div class='form-group'>"))
-
     class Meta:
         model = Dog
         fields = '__all__'
