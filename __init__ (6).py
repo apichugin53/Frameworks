@@ -1,9 +1,23 @@
+.photo {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 100%;
+}
+
 .logo {
   min-width: 36px;
 }
 
 .form-max-w {
     max-width: 450px;
+}
+
+.form-max-w-2 {
+    max-width: 900px;
+}
+
+.form-min-w {
+  min-width: 300px;
 }
 
 .breed-card {
@@ -26,7 +40,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /*justify-content: space-around;*/
   gap: 1rem;
 }
 
@@ -35,4 +49,23 @@
   max-height: 360px;
   width: 360px;
   height: auto;
+}
+
+.error-wrapper {
+  display: table;
+  width: 100%;
+}
+
+.error-wrapper > .errorlist {
+  display: table-footer-group;
+}
+
+ul.errorlist {
+  margin: 0;
+  padding: 0;
+}
+
+ul.errorlist li {
+  list-style-type: none;
+  color: red;
 }

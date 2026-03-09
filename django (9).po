@@ -1,0 +1,66 @@
+{% extends 'dogs/layout.html' %}
+{% load i18n %}
+{% load dogs.tags %}
+{% block content %}
+    <div class="m-auto form-max-w-2 form-min-w">
+        <div class="row mt-3">
+            <div class="col">
+                <img src="{% media object.photo %}" alt="{{ object.name }}"
+                     class="dog-detail-img photo">
+                <div class="row gap-2 mx-auto mt-2">
+                </div>
+            </div>
+            <div class="col">
+                <p><strong>{% translate 'Dog name' %}: </strong>{{ object.name }}</p>
+                <p>
+                    <strong>{% translate 'Breed' %}: </strong>
+                    <a href="{% url 'dogs:breed_details' object.breed.id %}">{{ object.breed }}</a>
+                </p>
+                <p><strong>{% translate 'Birth date' %}: </strong>{{ object.birth_date }}</p>
+                <p><strong>{% translate 'Owner' %}: </strong>{{ object.owner|default:'' }}</p>
+                <strong>{% translate 'Parents' %}: </strong>
+                {% for pedigree in object.ancestors.all %}
+                    <ul>
+                        {% with pedigree.ancestor as dog %}
+                            <li><a href="{% url 'dogs:dog_details' dog.id %}">{{ dog }}</a></li>
+                        {% endwith %}
+                    </ul>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <strong>{% translate 'Description' %}:</strong>
+            <p>{{ object.description }}</p>
+        </div>
+        <div class="row mt-3 gap-2 mx-auto w-100">
+            <a class="btn btn-outline-primary col"
+               href="{% url 'dogs:dog_update' object.id %}">{% translate 'Edit' %}</a>
+            <button class="btn btn-outline-danger col" type="button" 
+                    data-bs-toggle="modal" data-bs-target="#deleteModal">
+                {% translate 'Delete' %}
+            </button>
+        </div>
+    
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel">{% translate 'Delete dog' %}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{% translate 'Are you sure you want to delete the dog?' %}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <form method="POST" action="{% url 'dogs:dog_delete' object.id %}">
+                            {% csrf_token %}
+                            <button type="button" class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+                            <button type="submit" class="btn btn-outline-danger">{% translate 'Delete' %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

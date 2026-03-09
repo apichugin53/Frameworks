@@ -1,0 +1,16 @@
+{% extends 'dogs/layout.html' %}
+{% load i18n %}
+{% block content %}
+
+    {% for breed in object_list %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'dogs:breed_details' breed.id %}">{{ breed.name }}</a></h5>
+                <p class='breed-card'>{{ breed.description }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p>{% translate 'Nothing here yet!' %}</p>
+    {% endfor %}
+
+{% endblock %}
