@@ -1,16 +1,144 @@
-{% extends 'dogs/layout.html' %}
+{% extends 'core/layout.html' %}
+{% load i18n %}
 {% load users.tags %}
 {% block content %}
-    <div class="row mt-3">
-        <div class="col-auto">
-            <img src="{% media user.avatar %}" alt="{{ user.username }}" class="dog-detail-img border">
+    <div class="w-auto form-min-w">
+        <div class="d-flex flex-nowrap mt-3">
+            <h3 class="text-nowrap me-3">{% trans 'Profile' %} - {{ object }}</h3>
+            {% if request.user.is_staff %}
+                <div class="btn-group ms-auto">
+                    <button class="btn btn-w btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            data-bs-auto-close="outside" aria-expanded="false">
+                        {% trans 'Action' %}
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% if request.user.is_superuser %}
+                            <li class="dropstart">
+                                <button class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"
+                                        data-bs-auto-close="outside" aria-expanded="false">
+                                    {% trans 'Set role' %}
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-sm-start">
+                                    <li>
+                                        <form action="{% url 'users:user_update' object.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="role" value="ADMIN">
+                                            <button class="dropdown-item" type="submit">
+                                                {% trans 'Admin' %}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="{% url 'users:user_update' object.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="role" value="MODERATOR">
+                                            <button class="dropdown-item" type="submit">
+                                                {% trans 'Moderator' %}
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="{% url 'users:user_update' object.id %}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="role" value="USER">
+                                            <button class="dropdown-item" type="submit">
+                                                {% trans 'User' %}
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <button class="dropdown-item" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#blockModal" style="color:darkred">
+                                {% if object.is_active %}
+                                    {% translate 'Block' %}
+                                {% else %}
+                                    {% translate 'Unblock' %}
+                                {% endif %}
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
         </div>
-        <div class="col">
-            <p><strong>Логин: </strong>{{ user.username }}</p>
-            <p><strong>Email: </strong>{{ user.email }}</p>
-            <p><strong>Фамилия: </strong>{{ user.last_name }}</p>
-            <p><strong>Имя: </strong>{{ user.first_name }}</p>
-            <p><strong>Телефон: </strong>{{ user.phone }}</p>
+        <hr>
+        <div class="d-flex flex-wrap mt-3 gap-3">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 fill shadowed rounded">
+                <img src="{% media object.avatar %}" alt="{{ object.username }}" class="photo">
+            </div>
+
+            <div class="col shadowed rounded p-3">
+                <h4>{% trans 'About' %}</h4>
+                <hr>
+                <p><strong>{% translate 'Username' %}</strong>: {{ object.username }}</p>
+                <p><strong>{% translate 'Email' %}</strong>: {{ object.email }}</p>
+                <p><strong>{% translate 'First name' %}</strong>: {{ object.last_name }}</p>
+                <p><strong>{% translate 'Last name' %}</strong>: {{ object.first_name }}</p>
+                <p><strong>{% translate 'Phone' %}</strong>: {{ object.phone }}</p>
+            </div>
+
+            {% if request.user.is_staff %}
+                <div class="col shadowed rounded p-3">
+                    <div class="">
+                        <h4>{% trans 'Status' %}</h4>
+                        <hr>
+                        <p><strong>{% translate 'Role' %}</strong>: {{ object.get_role_display }}</p>
+                        <p><strong>{% translate 'Is active' %}</strong>: {{ object.is_active|yesno }}</p></div>
+                </div>
+            {% endif %}
         </div>
+
+        <div class="w-100 shadowed rounded mt-3 p-3">
+            <div class="d-flex flex-nowrap">
+                <h4 class="text-nowrap me-3 align-content-center">{% translate 'My pets' %}</h4>
+                <a class="btn btn-w btn-outline-success ms-auto" href="{% url 'dogs:dog_create' %}">
+                    {% translate 'Add' %}
+                </a>
+            </div>
+            <hr>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3">
+                {% for dog in object.dog_set.all %}
+                    <div class="col">
+                        {% include 'dogs/include/dog_card.html' %}
+                    </div>
+                {% empty %}
+                    <h5>{% translate 'Nothing here yet!' %}</h5>
+                {% endfor %}
+            </div>
+        </div>
+        {% if request.user.is_staff %}
+            <div id='blockModal' class='modal fade' tabindex='-1' aria-labelledby='blockModalLabel'>
+                <div class='modal-dialog modal-dialog-centered'>
+                    <div class='modal-content'>
+                        {% status_action object as action %}
+                        <div class='modal-header'>
+                            <h1 class='modal-title fs-5' id="blockModalLabel">
+                                {% blocktrans with text=action|capfirst %}{{ text }} {{ object }}{% endblocktrans %}
+                            </h1>
+                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div class='modal-body'>
+                            <h5>&#x26A0;
+                                {% blocktrans %}Are you sure you want to {{ action }} {{ object }}?{% endblocktrans %}
+                            </h5>
+                        </div>
+                        <div class='modal-footer'>
+                            <form method="POST" action="{% url 'users:user_update' object.id %}">
+                                {% csrf_token %}
+                                <input type='hidden' name='is_active' value='{{ object.is_active }}'>
+                                <button type='button' class='btn btn-w btn-outline-secondary' data-bs-dismiss='modal'>
+                                    {% translate 'Cancel' %}
+                                </button>
+                                <button type='submit' class='btn btn-w btn-outline-danger'>
+                                    {% blocktrans with text=action|capfirst %}{{ text }}{% endblocktrans %}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

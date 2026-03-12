@@ -1,7 +1,8 @@
-{% extends 'dogs/layout.html' %}
+{% extends 'core/layout.html' %}
+{% load i18n %}
 {% block content %}
 
-    {% for breed in breeds %}
+    {% for breed in object_list %}
         <div class="card mt-3">
             <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'dogs:breed_details' breed.id %}">{{ breed.name }}</a></h5>
@@ -9,7 +10,7 @@
             </div>
         </div>
     {% empty %}
-        <p>Здесь пока ничего нет</p>
+        <p>{% translate 'Nothing here yet!' %}</p>
     {% endfor %}
 
 {% endblock %}

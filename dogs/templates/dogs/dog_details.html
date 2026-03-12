@@ -1,20 +1,99 @@
-{% extends 'dogs/layout.html' %}
+{% extends 'core/layout.html' %}
+{% load i18n %}
 {% load dogs.tags %}
 {% block content %}
-    <div class="row mt-3">
-        <div class="col-auto">
-            <img src="{% media dog.photo %}" alt="{{ dog.name }}" class="dog-detail-img border">
-            <form class="row gap-2 mx-auto mt-2" method="POST" action="{% url 'dogs:dog_delete' dog.id %}">
-                {% csrf_token %}
-                <a class="btn btn-outline-primary col" href="{% url 'dogs:dog_update' dog.id %}">Изменить</a>
-                <button class="btn btn-outline-danger col" type="submit">Удалить</button>
-            </form>
+    <div class="m-auto form-min-w">
+        <div class="d-flex flex-nowrap mt-3">
+            <h3 class="text-nowrap me-3">{{ object }}</h3>
+            {% if can_edit %}
+                <div class="btn-group ms-auto" role="group">
+                    <button type="button" class="btn btn-w btn-warning dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        {% translate 'Action' %}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'dogs:dog_update' object.id %}" style="color:blue">
+                            {% translate 'Edit' %}
+                        </a>
+                        <button class="dropdown-item" type="button" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal" style="color:darkred">
+                            {% translate 'Delete' %}
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
         </div>
-        <div class="col">
-            <p><strong>Кличка: </strong>{{ dog.name }}</p>
-            <p><strong>Порода: </strong><a href="{% url 'dogs:breed_details' dog.breed.id %}">{{ dog.breed }}</a></p>
-            <strong>Описание:</strong>
-            <p>{{ dog.description }}</p>
+        <hr>
+        <div class="d-flex flex-wrap mt-3 gap-3">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6 fill shadowed rounded">
+                <img src="{% media object.photo %}" alt="{{ object.name }}" class="photo">
+            </div>
+            <div class="col shadowed rounded p-3">
+                <div class="d-flex">
+                    <h4 class="my-0">{% trans 'About' %}</h4>
+                    {% include 'dogs/include/dog_views_counter.html' with dog=dog %}
+                </div>
+                <hr>
+                <p><strong>{% translate 'Dog name' %}: </strong>{{ object.name }}</p>
+                <p>
+                    <strong>{% translate 'Breed' %}: </strong>
+                    <a href="{% url 'dogs:breed_details' object.breed.id %}">{{ object.breed }}</a>
+                </p>
+                <p><strong>{% translate 'Birth date' %}: </strong>{{ object.birth_date }}</p>
+                {% if user.is_authenticated %}
+                    <p>
+                        <strong>{% translate 'Owner' %}: </strong>
+                        {% if object.owner %}
+                            <a href="{% url 'users:user_details' object.owner.id %}">{{ object.owner|default:'' }}</a>
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
         </div>
+
+        <div class="w-100 shadowed rounded mt-3 p-3">
+            <h4 class="text-nowrap me-3">{% translate 'Description' %}:</h4>
+            <hr>
+            <p>{{ object.description }}</p>
+        </div>
+
+        <div class="w-100 shadowed rounded mt-3 p-3">
+            <h4 class="text-nowrap me-3">{% translate 'Pedigree' %}:</h4>
+            <hr>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3">
+                {% for pedigree in object.ancestors.all %}
+                    <div class="col">
+                        {% with pedigree.ancestor as dog %}{% include 'dogs/include/dog_card.html' %}{% endwith %}
+                    </div>
+                {% empty %}
+                    <h5>{% translate 'Nothing here yet!' %}</h5>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if can_edit %}
+            <div id="deleteModal" class="modal fade" tabindex="-1" aria-labelledby="deleteModalLabel">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="deleteModalLabel">{% translate 'Delete dog' %}</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5>&#x26A0; {% translate 'Are you sure you want to delete the dog?' %}</h5>
+                        </div>
+                        <div class="modal-footer">
+                            <form method="POST" action="{% url 'dogs:dog_delete' object.id %}">
+                                {% csrf_token %}
+                                <button type="button" class="btn btn-w btn-outline-secondary"
+                                        data-bs-dismiss="modal">{% translate 'Cancel' %}</button>
+                                <button type="submit"
+                                        class="btn btn-w btn-outline-danger">{% translate 'Delete' %}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

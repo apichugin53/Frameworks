@@ -27,7 +27,13 @@ urlpatterns = [
     path('', include('dogs.urls', namespace='dogs')),
     path('users/', include('users.urls', namespace='users')),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.ico'), name='favicon'),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    if settings.USE_DEBUG_TOOLBAR:
+        from debug_toolbar.toolbar import debug_toolbar_urls
+
+        urlpatterns += debug_toolbar_urls()

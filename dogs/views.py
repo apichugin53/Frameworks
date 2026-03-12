@@ -1,87 +1,132 @@
-from django.http.response import Http404
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls.base import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.exceptions import PermissionDenied
+from django.urls.base import reverse, reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic.base import TemplateView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 
 from dogs.forms import DogForm
 from dogs.models import Dog, Breed
+from users.models import Role
 
 
-def index(request):
-    context = {
-        'title': 'Главная страница',
+class IndexView(TemplateView):
+    template_name = 'dogs/index.html'
+    extra_context = {
+        'title': _('Main page'),
     }
-    return render(request, 'dogs/index.html', context)
 
-def dogs_list(request):
-    context = {
-        'title': 'Список собак',
-        'dogs': Dog.objects.all()
+
+class DogsListView(ListView):
+    model = Dog
+    template_name = 'dogs/dogs_list.html'
+    extra_context = {
+        'title': _('Dogs'),
     }
-    return render(request, 'dogs/dogs_list.html', context)
 
 
-def dog_details(request, pk_id):
-    context = {
-        'title': 'Описание собаки',
-        'dog': get_object_or_404(Dog, pk=pk_id),
+class DogCreateView(LoginRequiredMixin, CreateView):
+    model = Dog
+    form_class = DogForm
+    template_name = 'dogs/dog_form.html'
+    extra_context = {
+        'title': _('Add dog'),
+        'action_url': reverse_lazy('dogs:dog_create'),
     }
-    return render(request, 'dogs/dog_details.html', context)
+
+    def get(self, request, *args, **kwargs):
+        self.object = Dog(owner=self.request.user)
+        return self.render_to_response(self.get_context_data())
+
+    def get_success_url(self):
+        return reverse('dogs:dog_details', kwargs={'pk': self.object.id})
+
+    def form_valid(self, form):
+        actor = self.request.user
+        if actor.role == Role.USER:
+            form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
-def dog_create(request):
-    if request.method == 'POST':
-        form = DogForm(request.POST, request.FILES)
-        if form.is_valid():
-            dog = form.save()
-            return redirect('dogs:dog_details', dog.id)
-    else:
-        form = DogForm()
-    context = {
-        'title': 'Добавить питомца',
-        'form': form,
-        'action_url': reverse('dogs:dog_create'),
-        'action_text': 'Добавить'
+class DogUpdateView(LoginRequiredMixin, UpdateView):
+    model = Dog
+    form_class = DogForm
+    template_name = 'dogs/dog_form.html'
+    extra_context = {
+        'title': _('Edit dog'),
     }
-    return render(request, 'dogs/dog_form.html', context)
+
+    def get_success_url(self):
+        return reverse('dogs:dog_details', kwargs={'pk': self.object.id})
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'action_url': reverse_lazy('dogs:dog_update', kwargs={'pk': self.object.id}),
+            **kwargs,
+        }
+        return super().get_context_data(**context)
+
+    def get_object(self, queryset=None):
+        dog = super().get_object(queryset)
+        actor = self.request.user
+        if dog.owner == actor or actor.is_staff:
+            return dog
+        raise PermissionDenied
+
+    def form_valid(self, form):
+        actor = self.request.user
+        if actor.role == Role.USER:
+            form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 
-def dog_update(request, pk_id):
-    dog = get_object_or_404(Dog, pk=pk_id)
-    if request.method == 'POST':
-        form = DogForm(request.POST, request.FILES, instance=dog)
-        if form.is_valid():
-            form.save()
-            return redirect('dogs:dog_details', dog.id)
-    else:
-        form = DogForm(instance=dog)
-    context = {
-        'title': 'Изменить питомца',
-        'form': form,
-        'action_url': reverse('dogs:dog_update', args=[pk_id]),
-        'action_text': 'Обновить'
+class DogDetailsView(DetailView):
+    model = Dog
+    template_name = 'dogs/dog_details.html'
+    extra_context = {
+        'title': _('Dog'),
     }
-    return render(request, 'dogs/dog_form.html', context)
+
+    def get(self, request, *args, **kwargs):
+        result = super().get(request, *args, **kwargs)
+        self.object.update_views(self.request.user)
+        return result
+
+    def get_context_data(self, **kwargs):
+        dog = self.object
+        actor = self.request.user
+        context = {
+            'can_edit': actor.is_authenticated and (dog.owner == actor or actor.is_staff),
+            **kwargs,
+        }
+        return super().get_context_data(**context)
 
 
-def dog_delete(request, pk_id):
-    if request.method == 'POST':
-        dog = get_object_or_404(Dog, pk=pk_id)
-        dog.delete()
-        return redirect('dogs:dogs_list')
-    raise Http404
+class DogDeleteView(LoginRequiredMixin, DeleteView):
+    model = Dog
+    success_url = reverse_lazy('dogs:dogs_list')
+
+    def get_object(self, queryset=None):
+        dog = super().get_object(queryset)
+        actor = self.request.user
+        if dog.owner == actor or actor.is_staff:
+            return dog
+        raise PermissionDenied
 
 
-def breeds_list(request):
-    context = {
-        'title': 'Список пород',
-        'breeds': Breed.objects.all()
+class BreedsListView(ListView):
+    model = Breed
+    template_name = 'dogs/breeds_list.html'
+    extra_context = {
+        'title': _('Breeds'),
     }
-    return render(request, 'dogs/breeds_list.html', context)
 
 
-def breed_details(request, pk_id):
-    context = {
-        'title': 'Описание породы',
-        'breed': get_object_or_404(Breed, pk=pk_id),
+class BreedDetailsView(DetailView):
+    model = Breed
+    template_name = 'dogs/breed_details.html'
+    extra_context = {
+        'title': _('Breed'),
     }
-    return render(request, 'dogs/breed_details.html', context)

@@ -1,7 +1,5 @@
-from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.apps import AuthConfig
 
 
-class UsersConfig(AppConfig):
+class UsersConfig(AuthConfig):
     name = 'users'
-    verbose_name = _('users')

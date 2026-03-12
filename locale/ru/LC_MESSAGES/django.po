@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 20:20+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\core\templates\403.html:7
+msgid "Forbidden"
+msgstr "Доступ запрещен"
+
+#: .\core\templates\404.html:7
+msgid "Page not found"
+msgstr "Страница не найдена"
+
+#: .\core\templates\core\layout.html:24 .\dogs\views.py:26
+msgid "Dogs"
+msgstr "Собаки"
+
+#: .\core\templates\core\layout.html:27 .\dogs\views.py:123
+msgid "Breeds"
+msgstr "Породы"
+
+#: .\core\templates\core\layout.html:67 .\users\templates\users\profile.html:7
+#: .\users\views.py:48
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\core\templates\core\layout.html:72
+msgid "Exit"
+msgstr "Выход"
+
+#: .\core\templates\core\layout.html:79
+msgid "Sign in"
+msgstr "Вход"
+
+#: .\core\templates\core\layout.html:80
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: .\dogs\apps.py:7
+msgid "Dogs and breeds"
+msgstr "Собаки и породы"
+
+#: .\dogs\forms.py:19
+msgid "Photo"
+msgstr "Фото"
+
+#: .\dogs\forms.py:24 .\dogs\templates\dogs\dog_details.html:42
+msgid "Birth date"
+msgstr "Дата рождения"
+
+#: .\dogs\forms.py:30 .\dogs\templates\dogs\dog_details.html:45
+msgid "Owner"
+msgstr "Владелец"
+
+#: .\dogs\forms.py:35
+msgid "Views"
+msgstr "Просмотры"
+
+#: .\dogs\forms.py:67
+msgid "Birth date must not be in the future"
+msgstr "Дата рождения не может быть больше текущей"
+
+#: .\dogs\forms.py:69
+msgid "Birth date must not be older than 20 years ago"
+msgstr "Дата рождения не должна быть старше 20 лет"
+
+#: .\dogs\forms.py:93
+msgid "Ancestor"
+msgstr "Предок"
+
+#: .\dogs\models.py:10
+msgid "name"
+msgstr "имя"
+
+#: .\dogs\models.py:11 .\dogs\models.py:26
+msgid "description"
+msgstr "описание"
+
+#: .\dogs\models.py:17 .\dogs\models.py:24
+msgid "breed"
+msgstr "порода"
+
+#: .\dogs\models.py:18
+msgid "breeds"
+msgstr "породы"
+
+#: .\dogs\models.py:23
+msgid "dog name"
+msgstr "кличка"
+
+#: .\dogs\models.py:25
+msgid "birth date"
+msgstr "дата рождения"
+
+#: .\dogs\models.py:27
+msgid "photo"
+msgstr "фото"
+
+#: .\dogs\models.py:28
+msgid "owner"
+msgstr "владелец"
+
+#: .\dogs\models.py:29
+msgid "views"
+msgstr "просмотры"
+
+#: .\dogs\models.py:35
+msgid "dog"
+msgstr "собака"
+
+#: .\dogs\models.py:36
+msgid "dogs"
+msgstr "собаки"
+
+#: .\dogs\models.py:69
+msgid "ancestor"
+msgstr "предок"
+
+#: .\dogs\models.py:71
+msgid "descendant"
+msgstr "потомок"
+
+#: .\dogs\models.py:75
+msgid "pedigree"
+msgstr "родословная"
+
+#: .\dogs\models.py:76
+msgid "pedigrees"
+msgstr "родословные"
+
+#: .\dogs\templates\dogs\breeds_list.html:13
+#: .\dogs\templates\dogs\dog_details.html:69
+#: .\users\templates\users\profile.html:107
+msgid "Nothing here yet!"
+msgstr "Здесь пока ничего нет!"
+
+#: .\dogs\templates\dogs\dog_details.html:12
+#: .\users\templates\users\profile.html:12
+msgid "Action"
+msgstr "Действие"
+
+#: .\dogs\templates\dogs\dog_details.html:16
+msgid "Edit"
+msgstr "Изменить"
+
+#: .\dogs\templates\dogs\dog_details.html:20
+#: .\dogs\templates\dogs\dog_details.html:91
+msgid "Delete"
+msgstr "Удалить"
+
+#: .\dogs\templates\dogs\dog_details.html:33
+#: .\users\templates\users\profile.html:73
+msgid "About"
+msgstr "Инфо"
+
+#: .\dogs\templates\dogs\dog_details.html:37
+msgid "Dog name"
+msgstr "Кличка"
+
+#: .\dogs\templates\dogs\dog_details.html:39 .\dogs\views.py:131
+msgid "Breed"
+msgstr "Порода"
+
+#: .\dogs\templates\dogs\dog_details.html:55
+msgid "Description"
+msgstr "Описание"
+
+#: .\dogs\templates\dogs\dog_details.html:61
+#: .\dogs\templates\dogs\dog_form.html:63
+msgid "Pedigree"
+msgstr "Родословная"
+
+#: .\dogs\templates\dogs\dog_details.html:79
+msgid "Delete dog"
+msgstr "Удалить собаку"
+
+#: .\dogs\templates\dogs\dog_details.html:83
+msgid "Are you sure you want to delete the dog?"
+msgstr "Вы уверены, что хотите удалить собаку?"
+
+#: .\dogs\templates\dogs\dog_details.html:89
+#: .\users\templates\users\profile.html:132
+msgid "Cancel"
+msgstr "Отмена"
+
+#: .\dogs\templates\dogs\dog_form.html:10
+msgid "Dog info"
+msgstr "О собаке"
+
+#: .\dogs\templates\dogs\dog_form.html:75
+msgid "Save"
+msgstr "Сохранить"
+
+#: .\dogs\templates\dogs\dogs_list.html:6
+msgid "Our dogs"
+msgstr "Наши собаки"
+
+#: .\dogs\templates\dogs\dogs_list.html:9
+#: .\users\templates\users\profile.html:97
+msgid "Add"
+msgstr "Добавить"
+
+#: .\dogs\templates\dogs\include\dog_card.html:12
+msgid "More"
+msgstr "Подробнее"
+
+#: .\dogs\views.py:18
+msgid "Main page"
+msgstr "Главная страница"
+
+#: .\dogs\views.py:35
+msgid "Add dog"
+msgstr "Добавить собаку"
+
+#: .\dogs\views.py:58
+msgid "Edit dog"
+msgstr "Изменить собаку"
+
+#: .\dogs\views.py:89
+msgid "Dog"
+msgstr "Собака"
+
+#: .\users\forms.py:15
+msgid "Username or email"
+msgstr "Имя пользователя или почта"
+
+#: .\users\forms.py:24 .\users\forms.py:49
+msgid "Password"
+msgstr "Пароль"
+
+#: .\users\forms.py:36 .\users\templates\users\profile.html:75
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\users\forms.py:42 .\users\templates\users\profile.html:76
+msgid "Email"
+msgstr "Почта"
+
+#: .\users\forms.py:57
+msgid "Password confirmation"
+msgstr "Подтверждение пароля"
+
+#: .\users\models.py:7 .\users\templates\users\profile.html:27
+msgid "Admin"
+msgstr "Администратор"
+
+#: .\users\models.py:8 .\users\templates\users\profile.html:36
+msgid "Moderator"
+msgstr "Модератор"
+
+#: .\users\models.py:9 .\users\templates\users\profile.html:45
+msgid "User"
+msgstr "Пользователь"
+
+#: .\users\models.py:13
+#, fuzzy
+#| msgid "Email"
+msgid "email"
+msgstr "почта"
+
+#: .\users\models.py:14
+msgid "role"
+msgstr "роль"
+
+#: .\users\models.py:15
+#, fuzzy
+#| msgid "Phone"
+msgid "phone"
+msgstr "Телефон"
+
+#: .\users\models.py:16
+msgid "avatar"
+msgstr "аватар"
+
+#: .\users\models.py:19
+msgid "user"
+msgstr "пользователь"
+
+#: .\users\models.py:20
+msgid "users"
+msgstr "пользователи"
+
+#: .\users\models.py:27
+msgid "group"
+msgstr "группа"
+
+#: .\users\models.py:28
+msgid "groups"
+msgstr "группы"
+
+#: .\users\templates\users\profile.html:19
+msgid "Set role"
+msgstr "Задать роль"
+
+#: .\users\templates\users\profile.html:56
+msgid "Block"
+msgstr "Заблокировать"
+
+#: .\users\templates\users\profile.html:58
+msgid "Unblock"
+msgstr "Разблокировать"
+
+#: .\users\templates\users\profile.html:77
+msgid "First name"
+msgstr "Имя"
+
+#: .\users\templates\users\profile.html:78
+msgid "Last name"
+msgstr "Фамилия"
+
+#: .\users\templates\users\profile.html:79
+msgid "Phone"
+msgstr "Телефон"
+
+#: .\users\templates\users\profile.html:85
+msgid "Status"
+msgstr "Статус"
+
+#: .\users\templates\users\profile.html:87
+msgid "Role"
+msgstr "Роль"
+
+#: .\users\templates\users\profile.html:88
+msgid "Is active"
+msgstr "Активный"
+
+#: .\users\templates\users\profile.html:95
+msgid "My pets"
+msgstr "Мои питомцы"
+
+#: .\users\templates\users\profile.html:118
+#, python-format
+msgid "%(text)s %(object)s"
+msgstr "%(text)s %(object)s"
+
+#: .\users\templates\users\profile.html:124
+#, python-format
+msgid "Are you sure you want to %(action)s %(object)s?"
+msgstr "Вы уверены, что хотите %(action)s %(object)s?"
+
+#: .\users\templates\users\profile.html:135
+#, python-format
+msgid "%(text)s"
+msgstr "%(text)s"
+
+#: .\users\templatetags\users\tags.py:17
+msgid "block"
+msgstr "заблокировать"
+
+#: .\users\templatetags\users\tags.py:18
+msgid "unblock"
+msgstr "разблокировать"
+
+#: .\users\views.py:21
+msgid "Log in"
+msgstr "Войти"
+
+#: .\users\views.py:30
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+#~ msgid "email address"
+#~ msgstr "почта"
+
+#~ msgid "phone number"
+#~ msgstr "номер телефона"
+
+#~ msgid "Parents"
+#~ msgstr "Родители"
+
+#~ msgid "Update"
+#~ msgstr "Обновить"

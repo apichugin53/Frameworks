@@ -1,20 +1,20 @@
-{% extends 'dogs/layout.html' %}
+{% extends 'core/layout.html' %}
+{% load i18n %}
 {% load dogs.tags %}
 {% block content %}
-
-    <div class="d-flex my-3">
-        <h3>Наши питомцы</h3>
-        <a class="btn btn-outline-success ms-auto" href="{% url 'dogs:dog_create' %}">Добавить</a>
+    <div class="d-flex flex-nowrap mt-3">
+        <h3 class="text-nowrap me-3">{% translate 'Our dogs' %}</h3>
+        {% if user.is_authenticated %}
+            <a class="btn btn-w btn-outline-success ms-auto" href="{% url 'dogs:dog_create' %}">
+                {% translate 'Add' %}
+            </a>
+        {% endif %}
     </div>
-    <div class="dogs_list">
-        {% for dog in dogs %}
-            <div class="card dog-card">
-                <img src="{% media dog.photo %}" class="card-img-top dog-card-img bg-body-tertiary"
-                     alt="{{ dog.breed }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ dog.name }}</h5>
-                    <a href="{% url 'dogs:dog_details' dog.id %}" class="btn btn-outline-primary">Подробнее</a>
-                </div>
+    <hr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3">
+        {% for dog in object_list %}
+            <div class="col">
+            {% include 'dogs/include/dog_card.html' %}
             </div>
         {% endfor %}
     </div>

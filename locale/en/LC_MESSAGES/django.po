@@ -1,0 +1,371 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-11 20:20+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\core\templates\403.html:7
+msgid "Forbidden"
+msgstr ""
+
+#: .\core\templates\404.html:7
+msgid "Page not found"
+msgstr ""
+
+#: .\core\templates\core\layout.html:24 .\dogs\views.py:26
+msgid "Dogs"
+msgstr ""
+
+#: .\core\templates\core\layout.html:27 .\dogs\views.py:123
+msgid "Breeds"
+msgstr ""
+
+#: .\core\templates\core\layout.html:67 .\users\templates\users\profile.html:7
+#: .\users\views.py:48
+msgid "Profile"
+msgstr ""
+
+#: .\core\templates\core\layout.html:72
+msgid "Exit"
+msgstr ""
+
+#: .\core\templates\core\layout.html:79
+msgid "Sign in"
+msgstr ""
+
+#: .\core\templates\core\layout.html:80
+msgid "Sign up"
+msgstr ""
+
+#: .\dogs\apps.py:7
+msgid "Dogs and breeds"
+msgstr ""
+
+#: .\dogs\forms.py:19
+msgid "Photo"
+msgstr ""
+
+#: .\dogs\forms.py:24 .\dogs\templates\dogs\dog_details.html:42
+msgid "Birth date"
+msgstr ""
+
+#: .\dogs\forms.py:30 .\dogs\templates\dogs\dog_details.html:45
+msgid "Owner"
+msgstr ""
+
+#: .\dogs\forms.py:35
+msgid "Views"
+msgstr ""
+
+#: .\dogs\forms.py:67
+msgid "Birth date must not be in the future"
+msgstr ""
+
+#: .\dogs\forms.py:69
+msgid "Birth date must not be older than 20 years ago"
+msgstr ""
+
+#: .\dogs\forms.py:93
+msgid "Ancestor"
+msgstr ""
+
+#: .\dogs\models.py:10
+msgid "name"
+msgstr ""
+
+#: .\dogs\models.py:11 .\dogs\models.py:26
+msgid "description"
+msgstr ""
+
+#: .\dogs\models.py:17 .\dogs\models.py:24
+msgid "breed"
+msgstr ""
+
+#: .\dogs\models.py:18
+msgid "breeds"
+msgstr ""
+
+#: .\dogs\models.py:23
+msgid "dog name"
+msgstr ""
+
+#: .\dogs\models.py:25
+msgid "birth date"
+msgstr ""
+
+#: .\dogs\models.py:27
+msgid "photo"
+msgstr ""
+
+#: .\dogs\models.py:28
+msgid "owner"
+msgstr ""
+
+#: .\dogs\models.py:29
+msgid "views"
+msgstr ""
+
+#: .\dogs\models.py:35
+msgid "dog"
+msgstr ""
+
+#: .\dogs\models.py:36
+msgid "dogs"
+msgstr ""
+
+#: .\dogs\models.py:69
+msgid "ancestor"
+msgstr ""
+
+#: .\dogs\models.py:71
+msgid "descendant"
+msgstr ""
+
+#: .\dogs\models.py:75
+msgid "pedigree"
+msgstr ""
+
+#: .\dogs\models.py:76
+msgid "pedigrees"
+msgstr ""
+
+#: .\dogs\templates\dogs\breeds_list.html:13
+#: .\dogs\templates\dogs\dog_details.html:69
+#: .\users\templates\users\profile.html:107
+msgid "Nothing here yet!"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:12
+#: .\users\templates\users\profile.html:12
+msgid "Action"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:16
+msgid "Edit"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:20
+#: .\dogs\templates\dogs\dog_details.html:91
+msgid "Delete"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:33
+#: .\users\templates\users\profile.html:73
+msgid "About"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:37
+msgid "Dog name"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:39 .\dogs\views.py:131
+msgid "Breed"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:55
+msgid "Description"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:61
+#: .\dogs\templates\dogs\dog_form.html:63
+msgid "Pedigree"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:79
+msgid "Delete dog"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:83
+msgid "Are you sure you want to delete the dog?"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:89
+#: .\users\templates\users\profile.html:132
+msgid "Cancel"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_form.html:10
+msgid "Dog info"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_form.html:75
+msgid "Save"
+msgstr ""
+
+#: .\dogs\templates\dogs\dogs_list.html:6
+msgid "Our dogs"
+msgstr ""
+
+#: .\dogs\templates\dogs\dogs_list.html:9
+#: .\users\templates\users\profile.html:97
+msgid "Add"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\dog_card.html:12
+msgid "More"
+msgstr ""
+
+#: .\dogs\views.py:18
+msgid "Main page"
+msgstr ""
+
+#: .\dogs\views.py:35
+msgid "Add dog"
+msgstr ""
+
+#: .\dogs\views.py:58
+msgid "Edit dog"
+msgstr ""
+
+#: .\dogs\views.py:89
+msgid "Dog"
+msgstr ""
+
+#: .\users\forms.py:15
+msgid "Username or email"
+msgstr ""
+
+#: .\users\forms.py:24 .\users\forms.py:49
+msgid "Password"
+msgstr ""
+
+#: .\users\forms.py:36 .\users\templates\users\profile.html:75
+msgid "Username"
+msgstr ""
+
+#: .\users\forms.py:42 .\users\templates\users\profile.html:76
+msgid "Email"
+msgstr ""
+
+#: .\users\forms.py:57
+msgid "Password confirmation"
+msgstr ""
+
+#: .\users\models.py:7 .\users\templates\users\profile.html:27
+msgid "Admin"
+msgstr ""
+
+#: .\users\models.py:8 .\users\templates\users\profile.html:36
+msgid "Moderator"
+msgstr ""
+
+#: .\users\models.py:9 .\users\templates\users\profile.html:45
+msgid "User"
+msgstr ""
+
+#: .\users\models.py:13
+msgid "email"
+msgstr ""
+
+#: .\users\models.py:14
+msgid "role"
+msgstr ""
+
+#: .\users\models.py:15
+msgid "phone"
+msgstr ""
+
+#: .\users\models.py:16
+msgid "avatar"
+msgstr ""
+
+#: .\users\models.py:19
+msgid "user"
+msgstr ""
+
+#: .\users\models.py:20
+msgid "users"
+msgstr ""
+
+#: .\users\models.py:27
+msgid "group"
+msgstr ""
+
+#: .\users\models.py:28
+msgid "groups"
+msgstr ""
+
+#: .\users\templates\users\profile.html:19
+msgid "Set role"
+msgstr ""
+
+#: .\users\templates\users\profile.html:56
+msgid "Block"
+msgstr ""
+
+#: .\users\templates\users\profile.html:58
+msgid "Unblock"
+msgstr ""
+
+#: .\users\templates\users\profile.html:77
+msgid "First name"
+msgstr ""
+
+#: .\users\templates\users\profile.html:78
+msgid "Last name"
+msgstr ""
+
+#: .\users\templates\users\profile.html:79
+msgid "Phone"
+msgstr ""
+
+#: .\users\templates\users\profile.html:85
+msgid "Status"
+msgstr ""
+
+#: .\users\templates\users\profile.html:87
+msgid "Role"
+msgstr ""
+
+#: .\users\templates\users\profile.html:88
+msgid "Is active"
+msgstr ""
+
+#: .\users\templates\users\profile.html:95
+msgid "My pets"
+msgstr ""
+
+#: .\users\templates\users\profile.html:118
+#, python-format
+msgid "%(text)s %(object)s"
+msgstr ""
+
+#: .\users\templates\users\profile.html:124
+#, python-format
+msgid "Are you sure you want to %(action)s %(object)s?"
+msgstr ""
+
+#: .\users\templates\users\profile.html:135
+#, python-format
+msgid "%(text)s"
+msgstr ""
+
+#: .\users\templatetags\users\tags.py:17
+msgid "block"
+msgstr ""
+
+#: .\users\templatetags\users\tags.py:18
+msgid "unblock"
+msgstr ""
+
+#: .\users\views.py:21
+msgid "Log in"
+msgstr ""
+
+#: .\users\views.py:30
+msgid "Register"
+msgstr ""
