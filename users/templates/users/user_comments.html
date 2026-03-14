@@ -1,0 +1,29 @@
+{% extends 'users/profile.html' %}
+{% load users.tags %}
+{% load i18n %}
+
+{% block content %}
+    <div class="d-flex flex-column">
+        <div class="shadowed rounded mt-3 ms-3 p-3">
+            <div class="d-flex flex-nowrap">
+                <h4 class="text-nowrap me-3 align-content-center">{% translate 'My comments' %}</h4>
+            </div>
+            <hr>
+            {% for comment in comments %}
+                <div class="w-100 shadowed rounded mt-3 p-3">
+                    <small>{{ comment.user.username }}</small>
+                    <hr class="my-1">
+                    <p class="m-1">{{ comment.comment }}</p>
+                    <hr class="my-1">
+                    {% url 'dogs:dog_details' comment.dog.id  as dog_url %}
+                    <a class="small" href="{{ dog_url }}#{{ comment.id }}">Show</a>
+                    {% if request.user == comment.user %}
+                        <a class="small" href="{% url 'dogs:dog_update_comment' comment.id %}">Edit</a>
+                    {% endif %}
+                </div>
+            {% empty %}
+                <h5>{% translate 'Nothing here yet!' %}</h5>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,10 @@
-{% extends 'core/layout.html' %}
+{% extends 'layout.html' %}
+{% load static %}
 {% load i18n %}
 {% load dogs.tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
 {% block content %}
     <div class="m-auto form-min-w">
         <div class="d-flex flex-nowrap mt-3">
@@ -44,7 +48,7 @@
                     <p>
                         <strong>{% translate 'Owner' %}: </strong>
                         {% if object.owner %}
-                            <a href="{% url 'users:user_details' object.owner.id %}">{{ object.owner|default:'' }}</a>
+                            <a href="{% url 'users:user_details' object.owner.id %}">{{ object.owner.username }}</a>
                         {% endif %}
                     </p>
                 {% endif %}
@@ -52,13 +56,13 @@
         </div>
 
         <div class="w-100 shadowed rounded mt-3 p-3">
-            <h4 class="text-nowrap me-3">{% translate 'Description' %}:</h4>
+            <h4 class="my-0">{% translate 'Description' %}</h4>
             <hr>
             <p>{{ object.description }}</p>
         </div>
 
         <div class="w-100 shadowed rounded mt-3 p-3">
-            <h4 class="text-nowrap me-3">{% translate 'Pedigree' %}:</h4>
+            <h4 class="my-0">{% translate 'Pedigree' %}</h4>
             <hr>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-3">
                 {% for pedigree in object.ancestors.all %}
@@ -69,6 +73,23 @@
                     <h5>{% translate 'Nothing here yet!' %}</h5>
                 {% endfor %}
             </div>
+        </div>
+
+        <div class="w-100 shadowed rounded mt-3 p-3 gap-2">
+            <div class="d-flex flex-nowrap">
+                <h4 class="text-nowrap me-3 align-content-center">{% translate 'Comments' %}</h4>
+                <a class="btn btn-w btn-outline-success ms-auto" href="{% url 'dogs:dog_add_comment' dog.id %}">
+                    {% translate 'Add' %}
+                </a>
+            </div>
+            <hr>
+            {% for comment in comments %}
+                <div class="w-100">
+                    {% include 'dogs/include/comment.html' %}
+                </div>
+            {% empty %}
+                <h5>{% translate 'Nothing here yet!' %}</h5>
+            {% endfor %}
         </div>
 
         {% if can_edit %}

@@ -1,0 +1,18 @@
+{% extends 'users/profile.html' %}
+{% load users.tags %}
+{% load i18n %}
+
+{% block content %}
+    <div class="d-flex flex-column">
+        <div class="shadowed rounded mt-3 ms-3 p-3">
+            <form action="{% url 'users:profile_edit' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <hr>
+                <button type="submit" class="btn btn-outline-success">{% trans 'Save' %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

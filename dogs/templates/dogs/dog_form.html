@@ -1,7 +1,11 @@
-{% extends 'core/layout.html' %}
+{% extends 'layout.html' %}
+{% load static %}
 {% load i18n %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
 {% block content %}
-    <div class="mt-5 mx-auto form-max-w-2 form-min-w">
+    <div class="mt-5 mx-auto form-max-w-2">
         <div class="card border-success w-100">
             <div class="card-header text-bg-secondary">{{ title }}</div>
             <div class="card-body">
@@ -9,7 +13,7 @@
                     {% csrf_token %}
                     <h5 class="mb-3">{% translate 'Dog info' %}</h5>
                     <div class="row flex-row">
-                        <div class="col form-min-w">
+                        <div class="col">
                             <div class="form-group">
                                 {{ form.name.label_tag }}
                                 {{ form.name.errors }}
@@ -31,7 +35,7 @@
                                 {{ form.photo }}
                             </div>
                         </div>
-                        <div class="col form-min-w">
+                        <div class="col">
                             <div class="form-group">
                                 {{ form.description.label_tag }}
                                 {{ form.description.errors }}
@@ -42,14 +46,14 @@
                     {% if request.user.is_staff %}
                         <hr>
                         <div class="row">
-                            <div class="col form-min-w">
+                            <div class="col">
                                 <div class="form-group">
                                     {{ form.owner.label_tag }}
                                     {{ form.owner.errors }}
                                     {{ form.owner }}
                                 </div>
                             </div>
-                            <div class="col form-min-w">
+                            <div class="col">
                                 <div class="form-group">
                                     {{ form.views.label_tag }}
                                     {{ form.views.errors }}

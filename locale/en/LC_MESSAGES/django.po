@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-11 20:20+0300\n"
+"POT-Creation-Date: 2026-03-14 04:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,346 +26,390 @@ msgstr ""
 msgid "Page not found"
 msgstr ""
 
-#: .\core\templates\core\layout.html:24 .\dogs\views.py:26
+#: .\core\templates\include\list_card.html:10
+msgid "Details"
+msgstr ""
+
+#: .\core\templates\layout.html:24 .\dogs\views.py:18
+#: .\users\templates\users\profile.html:22
 msgid "Dogs"
 msgstr ""
 
-#: .\core\templates\core\layout.html:27 .\dogs\views.py:123
+#: .\core\templates\layout.html:27 .\dogs\views.py:116
 msgid "Breeds"
 msgstr ""
 
-#: .\core\templates\core\layout.html:67 .\users\templates\users\profile.html:7
-#: .\users\views.py:48
+#: .\core\templates\layout.html:30 .\users\views.py:18
+msgid "Users"
+msgstr ""
+
+#: .\core\templates\layout.html:64 .\users\templates\users\profile.html:15
+#: .\users\views.py:26 .\users\views.py:46 .\users\views.py:74
+#: .\users\views.py:105
 msgid "Profile"
 msgstr ""
 
-#: .\core\templates\core\layout.html:72
-msgid "Exit"
+#: .\core\templates\layout.html:69
+msgid "Sign out"
 msgstr ""
 
-#: .\core\templates\core\layout.html:79
+#: .\core\templates\layout.html:76
+#: .\security\templates\security\signin.html:10
+#: .\security\templates\security\signin.html:16 .\security\views.py:18
 msgid "Sign in"
 msgstr ""
 
-#: .\core\templates\core\layout.html:80
+#: .\core\templates\layout.html:77
+#: .\security\templates\security\signup.html:10
+#: .\security\templates\security\signup.html:16 .\security\views.py:27
 msgid "Sign up"
 msgstr ""
 
-#: .\dogs\apps.py:7
-msgid "Dogs and breeds"
-msgstr ""
-
-#: .\dogs\forms.py:19
+#: .\dogs\forms.py:20
 msgid "Photo"
 msgstr ""
 
-#: .\dogs\forms.py:24 .\dogs\templates\dogs\dog_details.html:42
+#: .\dogs\forms.py:25 .\dogs\templates\dogs\dog_details.html:46
 msgid "Birth date"
 msgstr ""
 
-#: .\dogs\forms.py:30 .\dogs\templates\dogs\dog_details.html:45
+#: .\dogs\forms.py:31 .\dogs\templates\dogs\dog_details.html:49
 msgid "Owner"
 msgstr ""
 
-#: .\dogs\forms.py:35
+#: .\dogs\forms.py:36
 msgid "Views"
 msgstr ""
 
-#: .\dogs\forms.py:67
+#: .\dogs\forms.py:68
 msgid "Birth date must not be in the future"
 msgstr ""
 
-#: .\dogs\forms.py:69
+#: .\dogs\forms.py:70
 msgid "Birth date must not be older than 20 years ago"
 msgstr ""
 
-#: .\dogs\forms.py:93
+#: .\dogs\forms.py:94
 msgid "Ancestor"
 msgstr ""
 
-#: .\dogs\models.py:10
+#: .\dogs\forms.py:124
+msgid "Comment"
+msgstr ""
+
+#: .\dogs\models.py:12
 msgid "name"
 msgstr ""
 
-#: .\dogs\models.py:11 .\dogs\models.py:26
+#: .\dogs\models.py:13 .\dogs\models.py:28
 msgid "description"
 msgstr ""
 
-#: .\dogs\models.py:17 .\dogs\models.py:24
+#: .\dogs\models.py:19 .\dogs\models.py:26
 msgid "breed"
 msgstr ""
 
-#: .\dogs\models.py:18
+#: .\dogs\models.py:20
 msgid "breeds"
 msgstr ""
 
-#: .\dogs\models.py:23
+#: .\dogs\models.py:25
 msgid "dog name"
 msgstr ""
 
-#: .\dogs\models.py:25
+#: .\dogs\models.py:27
 msgid "birth date"
 msgstr ""
 
-#: .\dogs\models.py:27
+#: .\dogs\models.py:29
 msgid "photo"
 msgstr ""
 
-#: .\dogs\models.py:28
+#: .\dogs\models.py:30
 msgid "owner"
 msgstr ""
 
-#: .\dogs\models.py:29
+#: .\dogs\models.py:31
 msgid "views"
 msgstr ""
 
-#: .\dogs\models.py:35
+#: .\dogs\models.py:37 .\dogs\models.py:87
 msgid "dog"
 msgstr ""
 
-#: .\dogs\models.py:36
+#: .\dogs\models.py:38
 msgid "dogs"
 msgstr ""
 
-#: .\dogs\models.py:69
+#: .\dogs\models.py:74
 msgid "ancestor"
 msgstr ""
 
-#: .\dogs\models.py:71
+#: .\dogs\models.py:76
 msgid "descendant"
 msgstr ""
 
-#: .\dogs\models.py:75
+#: .\dogs\models.py:80
 msgid "pedigree"
 msgstr ""
 
-#: .\dogs\models.py:76
+#: .\dogs\models.py:81
 msgid "pedigrees"
 msgstr ""
 
-#: .\dogs\templates\dogs\breeds_list.html:13
-#: .\dogs\templates\dogs\dog_details.html:69
-#: .\users\templates\users\profile.html:107
+#: .\dogs\models.py:85
+msgid "comment"
+msgstr ""
+
+#: .\dogs\models.py:86 .\users\models.py:25
+msgid "user"
+msgstr ""
+
+#: .\dogs\templates\dogs\breeds_list.html:16
+#: .\dogs\templates\dogs\dog_details.html:73
+#: .\dogs\templates\dogs\dog_details.html:91
+#: .\users\templates\users\user_comments.html:25
+#: .\users\templates\users\user_dogs.html:22
 msgid "Nothing here yet!"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:12
-#: .\users\templates\users\profile.html:12
-msgid "Action"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:16
-msgid "Edit"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:20
-#: .\dogs\templates\dogs\dog_details.html:91
-msgid "Delete"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:33
-#: .\users\templates\users\profile.html:73
-msgid "About"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:37
-msgid "Dog name"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:39 .\dogs\views.py:131
-msgid "Breed"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:55
-msgid "Description"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:61
-#: .\dogs\templates\dogs\dog_form.html:63
-msgid "Pedigree"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:79
-msgid "Delete dog"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:83
-msgid "Are you sure you want to delete the dog?"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:89
-#: .\users\templates\users\profile.html:132
-msgid "Cancel"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_form.html:10
-msgid "Dog info"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_form.html:75
+#: .\dogs\templates\dogs\comment_form.html:8
+#: .\dogs\templates\dogs\dog_form.html:79
+#: .\users\templates\users\user_edit.html:14
 msgid "Save"
 msgstr ""
 
-#: .\dogs\templates\dogs\dogs_list.html:6
-msgid "Our dogs"
+#: .\dogs\templates\dogs\dog_details.html:16
+#: .\users\templates\users\profile.html:48
+msgid "Action"
 msgstr ""
 
-#: .\dogs\templates\dogs\dogs_list.html:9
-#: .\users\templates\users\profile.html:97
+#: .\dogs\templates\dogs\dog_details.html:20
+msgid "Edit"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:24
+#: .\dogs\templates\dogs\dog_details.html:112
+msgid "Delete"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:37
+#: .\users\templates\users\user_details.html:12
+msgid "About"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:41
+msgid "Dog name"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:43 .\dogs\views.py:124
+msgid "Breed"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:59
+msgid "Description"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:65
+#: .\dogs\templates\dogs\dog_form.html:67
+msgid "Pedigree"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:80
+#: .\users\templates\users\profile.html:27
+msgid "Comments"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:82
+#: .\dogs\templates\dogs\dogs_list.html:13
+#: .\users\templates\users\user_dogs.html:12
 msgid "Add"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:100
+msgid "Delete dog"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:104
+msgid "Are you sure you want to delete the dog?"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:110
+#: .\users\templates\users\profile.html:120
+msgid "Cancel"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_form.html:14
+msgid "Dog info"
+msgstr ""
+
+#: .\dogs\templates\dogs\dogs_list.html:10
+msgid "Our dogs"
 msgstr ""
 
 #: .\dogs\templates\dogs\include\dog_card.html:12
 msgid "More"
 msgstr ""
 
-#: .\dogs\views.py:18
-msgid "Main page"
-msgstr ""
-
-#: .\dogs\views.py:35
+#: .\dogs\views.py:27
 msgid "Add dog"
 msgstr ""
 
-#: .\dogs\views.py:58
+#: .\dogs\views.py:50
 msgid "Edit dog"
 msgstr ""
 
-#: .\dogs\views.py:89
+#: .\dogs\views.py:81
 msgid "Dog"
 msgstr ""
 
-#: .\users\forms.py:15
+#: .\dogs\views.py:133 .\dogs\views.py:160
+msgid "Add comment"
+msgstr ""
+
+#: .\security\forms.py:11
 msgid "Username or email"
 msgstr ""
 
-#: .\users\forms.py:24 .\users\forms.py:49
+#: .\security\forms.py:20 .\security\forms.py:46
 msgid "Password"
 msgstr ""
 
-#: .\users\forms.py:36 .\users\templates\users\profile.html:75
+#: .\security\forms.py:33 .\users\templates\users\user_details.html:14
 msgid "Username"
 msgstr ""
 
-#: .\users\forms.py:42 .\users\templates\users\profile.html:76
+#: .\security\forms.py:39 .\users\templates\users\user_details.html:15
 msgid "Email"
 msgstr ""
 
-#: .\users\forms.py:57
+#: .\security\forms.py:54
 msgid "Password confirmation"
 msgstr ""
 
-#: .\users\models.py:7 .\users\templates\users\profile.html:27
+#: .\security\templates\security\signin.html:21
+msgid "Forgot password?"
+msgstr ""
+
+#: .\security\templates\security\signup.html:19
+msgid "Already have account?"
+msgstr ""
+
+#: .\security\templates\security\signup.html:20
+msgid "Log in"
+msgstr ""
+
+#: .\users\admin.py:15
+msgid "Personal info"
+msgstr ""
+
+#: .\users\admin.py:17
+msgid "Permissions"
+msgstr ""
+
+#: .\users\admin.py:29
+msgid "Important dates"
+msgstr ""
+
+#: .\users\models.py:9 .\users\templates\users\profile.html:63
 msgid "Admin"
 msgstr ""
 
-#: .\users\models.py:8 .\users\templates\users\profile.html:36
+#: .\users\models.py:10 .\users\templates\users\profile.html:72
 msgid "Moderator"
 msgstr ""
 
-#: .\users\models.py:9 .\users\templates\users\profile.html:45
+#: .\users\models.py:11 .\users\templates\users\profile.html:81
 msgid "User"
 msgstr ""
 
-#: .\users\models.py:13
-msgid "email"
-msgstr ""
-
-#: .\users\models.py:14
+#: .\users\models.py:14 .\users\models.py:20
 msgid "role"
 msgstr ""
 
 #: .\users\models.py:15
-msgid "phone"
-msgstr ""
-
-#: .\users\models.py:16
-msgid "avatar"
+msgid "roles"
 msgstr ""
 
 #: .\users\models.py:19
-msgid "user"
+msgid "email"
 msgstr ""
 
-#: .\users\models.py:20
+#: .\users\models.py:21
+msgid "phone"
+msgstr ""
+
+#: .\users\models.py:22
+msgid "avatar"
+msgstr ""
+
+#: .\users\models.py:26
 msgid "users"
 msgstr ""
 
-#: .\users\models.py:27
+#: .\users\models.py:57
 msgid "group"
 msgstr ""
 
-#: .\users\models.py:28
+#: .\users\models.py:58
 msgid "groups"
 msgstr ""
 
-#: .\users\templates\users\profile.html:19
+#: .\users\templates\users\profile.html:36
+msgid "Settings"
+msgstr ""
+
+#: .\users\templates\users\profile.html:55
 msgid "Set role"
 msgstr ""
 
-#: .\users\templates\users\profile.html:56
+#: .\users\templates\users\profile.html:92
 msgid "Block"
 msgstr ""
 
-#: .\users\templates\users\profile.html:58
+#: .\users\templates\users\profile.html:94
 msgid "Unblock"
 msgstr ""
 
-#: .\users\templates\users\profile.html:77
-msgid "First name"
-msgstr ""
-
-#: .\users\templates\users\profile.html:78
-msgid "Last name"
-msgstr ""
-
-#: .\users\templates\users\profile.html:79
-msgid "Phone"
-msgstr ""
-
-#: .\users\templates\users\profile.html:85
-msgid "Status"
-msgstr ""
-
-#: .\users\templates\users\profile.html:87
-msgid "Role"
-msgstr ""
-
-#: .\users\templates\users\profile.html:88
-msgid "Is active"
-msgstr ""
-
-#: .\users\templates\users\profile.html:95
-msgid "My pets"
-msgstr ""
-
-#: .\users\templates\users\profile.html:118
+#: .\users\templates\users\profile.html:106
 #, python-format
 msgid "%(text)s %(object)s"
 msgstr ""
 
-#: .\users\templates\users\profile.html:124
+#: .\users\templates\users\profile.html:112
 #, python-format
 msgid "Are you sure you want to %(action)s %(object)s?"
 msgstr ""
 
-#: .\users\templates\users\profile.html:135
+#: .\users\templates\users\profile.html:123
 #, python-format
 msgid "%(text)s"
 msgstr ""
 
-#: .\users\templatetags\users\tags.py:17
+#: .\users\templates\users\user_comments.html:9
+msgid "My comments"
+msgstr ""
+
+#: .\users\templates\users\user_details.html:16
+msgid "First name"
+msgstr ""
+
+#: .\users\templates\users\user_details.html:17
+msgid "Last name"
+msgstr ""
+
+#: .\users\templates\users\user_details.html:18
+msgid "Phone"
+msgstr ""
+
+#: .\users\templates\users\user_dogs.html:9
+msgid "My pets"
+msgstr ""
+
+#: .\users\templatetags\users\tags.py:23
 msgid "block"
 msgstr ""
 
-#: .\users\templatetags\users\tags.py:18
+#: .\users\templatetags\users\tags.py:24
 msgid "unblock"
-msgstr ""
-
-#: .\users\views.py:21
-msgid "Log in"
-msgstr ""
-
-#: .\users\views.py:30
-msgid "Register"
 msgstr ""

@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'security/css/style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="mt-5 mx-auto auth-form">
+        <div class="card border-success w-100">
+            <div class="card-header text-center">{% translate 'Sign in' %}</div>
+            <div class="card-body">
+                <form id="signin-form" action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-outline-success mt-3 w-100">
+                        {% translate 'Sign in' %}
+                    </button>
+                    {% url 'password_reset' as password_reset_url %}
+                    {% if password_reset_url %}
+                        <small class="mt-1">
+                            <a href="{{ password_reset_url }}">{% translate 'Forgot password?' %}</a>
+                        </small>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

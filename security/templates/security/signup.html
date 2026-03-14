@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'security/css/style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="mt-5 mx-auto auth-form">
+        <div class="card border-success w-100">
+            <div class="card-header text-center">{% translate 'Sign up' %}</div>
+            <div class="card-body">
+                <form id="signup-form" action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="btn btn-outline-success mt-3 w-100">
+                        {% translate 'Sign up' %}
+                    </button>
+                    <small class="mt-1 d-flex">
+                        <span>{% translate 'Already have account?' %}</span>
+                        <a href="{% url 'auth:signin' %}" class="ms-auto">{% translate 'Log in' %}</a>
+                    </small>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,16 +1,19 @@
-from django.contrib.auth.views import LogoutView
 from django.urls import path
 
-from users import views
 from users.apps import UsersConfig
+from users.views import UserListView, UserDetailsView, UserDogsView, UserEditView, UserStatusView, UserCommentsView
 
 app_name = UsersConfig.name
 
 urlpatterns = [
-    path('signin/', views.SignInView.as_view(), name='signin'),
-    path('signup/', views.SignUpView.as_view(), name='signup'),
-    path('logout/', LogoutView.as_view(), name='logout'),
-    path('profile/', views.ProfileView.as_view(), name='profile'),
-    path('<int:pk>/', views.ProfileView.as_view(), name='user_details'),
-    path('<int:pk>/update', views.ProfileUpdate.as_view(), name='user_update'),
+    path('', UserListView.as_view(), name='user_list'),
+    path('<int:pk>/', UserDetailsView.as_view(), name='user_details'),
+    path('<int:pk>/comments/', UserCommentsView.as_view(), name='user_comments'),
+    path('<int:pk>/dogs/', UserDogsView.as_view(), name='user_dogs'),
+    path('<int:pk>/edit/', UserEditView.as_view(), name='user_edit'),
+    path('<int:pk>/status/', UserStatusView.as_view(), name='user_status'),
+    path('profile/', UserDetailsView.as_view(), name='profile'),
+    path('profile/comments/', UserCommentsView.as_view(), name='profile_comments'),
+    path('profile/dogs/', UserDogsView.as_view(), name='profile_dogs'),
+    path('profile/edit/', UserEditView.as_view(), name='profile_edit'),
 ]

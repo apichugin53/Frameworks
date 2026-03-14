@@ -1,0 +1,10 @@
+{% load i18n %}
+<div id="{{ comment.id }}" class="w-100 shadowed rounded mt-3 p-3">
+    <small>{{ comment.user.username }}</small>
+    <hr class="my-1">
+    <p class="m-1">{{ comment.comment }}</p>
+    <hr class="my-1">
+    {% if request.user == comment.user %}
+        <a class="small" href="{% url 'dogs:dog_update_comment' comment.id %}">Edit</a>
+    {% endif %}
+</div>

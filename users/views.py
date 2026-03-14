@@ -1,49 +1,27 @@
-from django.contrib.auth import get_user_model, login
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, RedirectURLMixin
 from django.core.exceptions import PermissionDenied
-from django.shortcuts import redirect, resolve_url
-from django.urls.base import reverse_lazy
+from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView
 
-from users.forms import SignInForm, SignUpForm, UserUpdateForm
+from users.forms import UserEditForm, UserStatusForm
 
 User = get_user_model()
 
 
-class SignInView(LoginView):
-    form_class = SignInForm
-    template_name = 'users/signin.html'
-    redirect_authenticated_user = True
+class UserListView(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'users/user_list.html'
     extra_context = {
-        'title': _('Log in')
+        'title': _('Users')
     }
 
 
-class SignUpView(RedirectURLMixin, CreateView):
+class UserDetailsView(LoginRequiredMixin, DetailView):
     model = User
-    form_class = SignUpForm
-    template_name = 'users/signup.html'
-    extra_context = {
-        'title': _('Register')
-    }
-    success_url = reverse_lazy('dogs:home')
-
-    def get_default_redirect_url(self):
-        if self.next_page:
-            return resolve_url(self.next_page)
-        return resolve_url('users:profile')
-
-    def form_valid(self, form):
-        result = super().form_valid(form)
-        login(self.request, self.object)
-        return result
-
-class ProfileView(LoginRequiredMixin, DetailView):
-    model = User
-    template_name = 'users/profile.html'
+    template_name = 'users/user_details.html'
     extra_context = {
         'title': _('Profile')
     }
@@ -61,12 +39,75 @@ class ProfileView(LoginRequiredMixin, DetailView):
         return self.request.user
 
 
-class ProfileUpdate(LoginRequiredMixin, UpdateView):
+class UserDogsView(LoginRequiredMixin, DetailView):
     model = User
-    form_class = UserUpdateForm
+    template_name = 'users/user_dogs.html'
+    extra_context = {
+        'title': _('Profile')
+    }
 
     def get(self, request, *args, **kwargs):
-        raise PermissionDenied
+        if self.pk_url_kwarg in self.kwargs:
+            pk = self.kwargs[self.pk_url_kwarg]
+            if self.request.user.id == pk:
+                return redirect('users:profile_dogs')
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self, *args, **kwargs):
+        if self.pk_url_kwarg in self.kwargs:
+            return super().get_object(*args, **kwargs)
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'dogs': self.get_object().dog_set.all(),
+            **kwargs,
+        }
+        return super().get_context_data(**context)
+
+
+class UserEditView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserEditForm
+    template_name = 'users/user_edit.html'
+    extra_context = {
+        'title': _('Profile')
+    }
+
+    def get(self, request, *args, **kwargs):
+        if self.pk_url_kwarg in self.kwargs:
+            pk = self.kwargs[self.pk_url_kwarg]
+            if self.request.user.id == pk:
+                return redirect('users:profile_edit')
+            else:
+                raise PermissionDenied
+        return super().get(request, *args, **kwargs)
+
+    def get_object(self, *args, **kwargs):
+        if self.pk_url_kwarg in self.kwargs:
+            return super().get_object(*args, **kwargs)
+        return self.request.user
+
+
+class UserStatusView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserStatusForm
+    http_method_names = ["post", "options"]
 
     def get_success_url(self):
-        return reverse_lazy('users:user_details', kwargs={'pk': self.object.id})
+        return reverse('users:user_details', kwargs={'pk': self.object.id})
+
+
+class UserCommentsView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = 'users/user_comments.html'
+    extra_context = {
+        'title': _('Profile')
+    }
+
+    def get_context_data(self, **kwargs):
+        context = {
+            'comments': self.get_object().comment_set.all(),
+            **kwargs,
+        }
+        return super().get_context_data(**context)

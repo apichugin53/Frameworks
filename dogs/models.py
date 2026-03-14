@@ -1,6 +1,8 @@
 from django.core.mail import send_mail
 from django.db import models
 from django.db.models.expressions import F
+from django.urls import reverse
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from webapp import settings
@@ -35,6 +37,9 @@ class Dog(models.Model):
         verbose_name = _('dog')
         verbose_name_plural = _('dogs')
         ordering = ('name', 'breed',)
+
+    def get_absolute_url(self):
+        return reverse("dogs:dog_details", kwargs={"pk": self.id})
 
     def update_views(self, viewer_user):
         if viewer_user != self.owner:
@@ -74,3 +79,11 @@ class Pedigree(models.Model):
         unique_together = (('ancestor', 'descendant'),)
         verbose_name = _('pedigree')
         verbose_name_plural = _('pedigrees')
+
+
+class Comment(models.Model):
+    comment = models.TextField(_('comment'))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name=_('user'))
+    dog = models.ForeignKey(Dog, on_delete=models.CASCADE, verbose_name=_('dog'))
+    created = models.DateTimeField(verbose_name='created', auto_now=True)
+    updated = models.DateTimeField(verbose_name='updated', auto_now=True)

@@ -1,7 +1,10 @@
-{% extends 'core/layout.html' %}
+{% extends 'layout.html' %}
+{% load static %}
 {% load i18n %}
+{% block css %}
+	<link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
 {% block content %}
-
     {% for breed in object_list %}
         <div class="card mt-3">
             <div class="card-body">
@@ -12,5 +15,4 @@
     {% empty %}
         <p>{% translate 'Nothing here yet!' %}</p>
     {% endfor %}
-
 {% endblock %}

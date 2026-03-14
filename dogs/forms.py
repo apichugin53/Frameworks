@@ -3,13 +3,14 @@ import datetime
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.forms import ModelForm
+from django.db.models import TextField
+from django.forms import ModelForm, CharField
 from django.forms.fields import FileField, DateField, IntegerField
 from django.forms.models import inlineformset_factory, BaseInlineFormSet, ModelChoiceField
 from django.forms.widgets import FileInput, TextInput, Textarea, Select, DateInput, NumberInput
 from django.utils.translation import gettext_lazy as _
 
-from dogs.models import Dog, Pedigree
+from dogs.models import Dog, Pedigree, Comment
 
 User = get_user_model()
 
@@ -117,3 +118,10 @@ def pedigree_formset_factory():
 
 
 PedigreeFormSet = pedigree_formset_factory()
+
+
+class CommentForm(ModelForm):
+    comment = CharField(label=_('Comment'), widget=Textarea(attrs={'class': 'form-control'}))
+    class Meta:
+        model = Comment
+        fields = ('comment',)
