@@ -1,27 +1,33 @@
-{% extends 'users/profile.html' %}
+{% extends 'profile.html' %}
 {% load static %}
 {% load users.tags %}
 {% load i18n %}
-{% block content %}
-    <div class="d-flex flex-column">
-        <div class="d-flex flex-column shadowed rounded mt-3 ms-3 p-3">
-            <div class="d-flex flex-nowrap">
-                <h4 class="text-nowrap me-3 align-content-center">{% translate 'My pets' %}</h4>
-                {% if request.user == user %}
-                    <a class="btn btn-w btn-outline-success ms-auto" href="{% url 'dogs:dog_create' %}">
-                        {% translate 'Add' %}
-                    </a>
-                {% endif %}
-            </div>
-            <hr>
-            <div class="d-flex flex-row flex-wrap gap-2">
-                {% for dog in dogs %}
-                    {% media dog.photo as image %}
-                    {% include 'include/list_card.html' with image_url=image caption=dog.name details=dog.breed details_url=dog.get_absolute_url %}
-                {% empty %}
-                    <h5>{% translate 'Nothing here yet!' %}</h5>
-                {% endfor %}
-            </div>
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
+
+{% block sidenav %}
+    {% include 'users/include/sidenav.html' %}
+{% endblock %}
+
+{% block details %}
+    <div class="d-flex flex-column flex-grow-1 p-3 shadow rounded">
+        <div class="d-flex flex-nowrap">
+            <h4 class="text-nowrap me-3 align-content-center">{% translate 'Dogs' %}</h4>
+            {% if request.user == user %}
+                <a class="btn btn-outline-success ms-auto" href="{% url 'dogs:dog_add' %}">
+                    {% translate 'Add' %}
+                </a>
+            {% endif %}
+        </div>
+        <hr>
+        <div class="d-flex flex-wrap gap-3 justify-content-evenly">
+            {% for dog in dogs %}
+                {% include 'dogs/include/dog_card.html' %}
+            {% empty %}
+                <h5>{% translate 'Nothing here yet!' %}</h5>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
