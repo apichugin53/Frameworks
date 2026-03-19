@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-column mx-auto shadow rounded mt-3 p-3">
+        <h4 class="">{% translate 'Comment' %} - <a href="{{ dog.get_absolute_url }}">{{ dog }}</a></h4>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <div class="d-flex">
+                <button class="btn btn-outline-success mt-3 mx-auto" type="submit">{% translate 'Save' %}</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load users.tags %}
+{% load i18n %}
+{% load static %}
+
+<div class="side-nav d-flex flex-column mb-auto">
+    <nav class="shadow rounded p-2">
+        <h4 class="nav">
+            <a href="{{ dog.get_absolute_url }}" class="nav-link">
+                {{ dog.name }}
+            </a>
+        </h4>
+        <hr>
+        <ul class="nav flex-column text-nowrap">
+            <li class="nav-item">
+                <a href="{% url 'dogs:dog_pedigree' object.id %}" class="nav-link">
+                    {% translate 'Pedigree' %}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'dogs:dog_comments' object.id %}" class="nav-link">
+                    {% translate 'Comments' %}
+                </a>
+            </li>
+            {% if request.user == object.owner or request.user.is_moderator and not object.owner %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dogs:dog_update' object.id %}" style="color:blue">
+                        {% translate 'Edit' %}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% if can_edit %}
+        <button class="btn btn-outline-danger mt-3" type="button" data-bs-toggle="modal" data-bs-target="#deleteDogModal">
+            {% translate 'Delete' %}
+        </button>
+
+        {% translate 'delete' as action %}
+        {% url 'dogs:dog_delete' object.id as url %}
+        {% include 'include/modal.html' with action=action subject=dog modal_id='deleteDogModal' submit_url=url %}
+    {% endif %}
+</div>

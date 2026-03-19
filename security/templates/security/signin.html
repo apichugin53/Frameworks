@@ -12,15 +12,19 @@
                 <form id="signin-form" action="" method="post">
                     {% csrf_token %}
                     {{ form }}
+                    <small class="mt-1">
+                        <a href="{% url 'auth:password_reset' %}">{% translate 'Forgot password?' %}</a>
+                    </small>
                     <button type="submit" class="btn btn-outline-success mt-3 w-100">
                         {% translate 'Sign in' %}
                     </button>
-                    {% url 'password_reset' as password_reset_url %}
-                    {% if password_reset_url %}
-                        <small class="mt-1">
-                            <a href="{{ password_reset_url }}">{% translate 'Forgot password?' %}</a>
+                    <div class="d-flex flex-column mt-2">
+                        <hr class="my-2">
+                        <small class="d-flex mx-auto">
+                            <span class="me-1">{% translate 'No account?' %}</span>
+                            <a href="{% url 'auth:signin' %}">{% translate 'Sign up' %}</a>
                         </small>
-                    {% endif %}
+                    </div>
                 </form>
             </div>
         </div>

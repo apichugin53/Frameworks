@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-14 04:43+0300\n"
+"POT-Creation-Date: 2026-03-19 04:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,118 +26,122 @@ msgstr ""
 msgid "Page not found"
 msgstr ""
 
-#: .\core\templates\include\list_card.html:10
-msgid "Details"
+#: .\core\templates\include\modal.html:12
+#, python-format
+msgid "Are you sure you want to %(action)s %(subject)s?"
 msgstr ""
 
-#: .\core\templates\layout.html:24 .\dogs\views.py:18
-#: .\users\templates\users\profile.html:22
+#: .\core\templates\include\modal.html:19
+msgid "Cancel"
+msgstr ""
+
+#: .\core\templates\layout.html:26 .\dogs\views.py:21
+#: .\users\templates\users\include\sidenav.html:16
+#: .\users\templates\users\user_dogs.html:17
 msgid "Dogs"
 msgstr ""
 
-#: .\core\templates\layout.html:27 .\dogs\views.py:116
+#: .\core\templates\layout.html:29 .\dogs\views.py:143
 msgid "Breeds"
 msgstr ""
 
-#: .\core\templates\layout.html:30 .\users\views.py:18
+#: .\core\templates\layout.html:32 .\users\views.py:18
 msgid "Users"
 msgstr ""
 
-#: .\core\templates\layout.html:64 .\users\templates\users\profile.html:15
-#: .\users\views.py:26 .\users\views.py:46 .\users\views.py:74
-#: .\users\views.py:105
-msgid "Profile"
+#: .\core\templates\layout.html:36 .\dogs\templates\dogs\comments_list.html:7
+#: .\dogs\templates\dogs\dog_comments.html:18
+#: .\dogs\templates\dogs\include\sidenav.html:21 .\dogs\views.py:287
+#: .\users\templates\users\include\sidenav.html:21
+#: .\users\templates\users\user_comments.html:17
+msgid "Comments"
 msgstr ""
 
-#: .\core\templates\layout.html:69
-msgid "Sign out"
-msgstr ""
-
-#: .\core\templates\layout.html:76
-#: .\security\templates\security\signin.html:10
-#: .\security\templates\security\signin.html:16 .\security\views.py:18
-msgid "Sign in"
+#: .\core\templates\layout.html:42 .\dogs\templates\dogs\breed_details.html:9
+msgid "Search"
 msgstr ""
 
 #: .\core\templates\layout.html:77
+#: .\users\templates\users\include\sidenav.html:9
+#: .\users\templates\users\user_details.html:20 .\users\views.py:56
+#: .\users\views.py:71 .\users\views.py:94 .\users\views.py:149
+msgid "Profile"
+msgstr ""
+
+#: .\core\templates\layout.html:81
+msgid "Admin panel"
+msgstr ""
+
+#: .\core\templates\layout.html:87
+msgid "Sign out"
+msgstr ""
+
+#: .\core\templates\layout.html:94
+#: .\security\templates\security\signin.html:10
+#: .\security\templates\security\signin.html:19 .\security\views.py:20
+msgid "Sign in"
+msgstr ""
+
+#: .\core\templates\layout.html:95
+#: .\security\templates\security\signin.html:25
 #: .\security\templates\security\signup.html:10
-#: .\security\templates\security\signup.html:16 .\security\views.py:27
+#: .\security\templates\security\signup.html:16 .\security\views.py:29
 msgid "Sign up"
 msgstr ""
 
-#: .\dogs\forms.py:20
-msgid "Photo"
+#: .\dogs\apps.py:7
+msgid "Dogs and breeds"
 msgstr ""
 
-#: .\dogs\forms.py:25 .\dogs\templates\dogs\dog_details.html:46
-msgid "Birth date"
-msgstr ""
-
-#: .\dogs\forms.py:31 .\dogs\templates\dogs\dog_details.html:49
-msgid "Owner"
-msgstr ""
-
-#: .\dogs\forms.py:36
-msgid "Views"
-msgstr ""
-
-#: .\dogs\forms.py:68
+#: .\dogs\forms.py:50
 msgid "Birth date must not be in the future"
 msgstr ""
 
-#: .\dogs\forms.py:70
+#: .\dogs\forms.py:52
 msgid "Birth date must not be older than 20 years ago"
-msgstr ""
-
-#: .\dogs\forms.py:94
-msgid "Ancestor"
-msgstr ""
-
-#: .\dogs\forms.py:124
-msgid "Comment"
 msgstr ""
 
 #: .\dogs\models.py:12
 msgid "name"
 msgstr ""
 
-#: .\dogs\models.py:13 .\dogs\models.py:28
+#: .\dogs\models.py:13 .\dogs\models.py:30
 msgid "description"
 msgstr ""
 
-#: .\dogs\models.py:19 .\dogs\models.py:26
+#: .\dogs\models.py:16 .\dogs\models.py:28
 msgid "breed"
 msgstr ""
 
-#: .\dogs\models.py:20
+#: .\dogs\models.py:17
 msgid "breeds"
 msgstr ""
 
-#: .\dogs\models.py:25
+#: .\dogs\models.py:27
 msgid "dog name"
 msgstr ""
 
-#: .\dogs\models.py:27
+#: .\dogs\models.py:29
 msgid "birth date"
 msgstr ""
 
-#: .\dogs\models.py:29
+#: .\dogs\models.py:31
 msgid "photo"
 msgstr ""
 
-#: .\dogs\models.py:30
+#: .\dogs\models.py:32
 msgid "owner"
 msgstr ""
 
-#: .\dogs\models.py:31
+#: .\dogs\models.py:33
 msgid "views"
 msgstr ""
 
-#: .\dogs\models.py:37 .\dogs\models.py:87
+#: .\dogs\models.py:39 .\dogs\models.py:87
 msgid "dog"
 msgstr ""
 
-#: .\dogs\models.py:38
+#: .\dogs\models.py:40
 msgid "dogs"
 msgstr ""
 
@@ -157,114 +161,158 @@ msgstr ""
 msgid "pedigrees"
 msgstr ""
 
-#: .\dogs\models.py:85
+#: .\dogs\models.py:85 .\dogs\models.py:93
+#: .\dogs\templates\dogs\comments_list.html:20
+#: .\dogs\templates\dogs\dog_comments.html:32
+#: .\users\templates\users\user_comments.html:28
 msgid "comment"
 msgstr ""
 
-#: .\dogs\models.py:86 .\users\models.py:25
+#: .\dogs\models.py:86 .\users\models.py:50
 msgid "user"
 msgstr ""
 
-#: .\dogs\templates\dogs\breeds_list.html:16
-#: .\dogs\templates\dogs\dog_details.html:73
-#: .\dogs\templates\dogs\dog_details.html:91
-#: .\users\templates\users\user_comments.html:25
-#: .\users\templates\users\user_dogs.html:22
+#: .\dogs\models.py:88
+msgid "created"
+msgstr ""
+
+#: .\dogs\models.py:89
+msgid "updated"
+msgstr ""
+
+#: .\dogs\models.py:90
+msgid "active"
+msgstr ""
+
+#: .\dogs\models.py:94
+msgid "comments"
+msgstr ""
+
+#: .\dogs\templates\dogs\breeds_list.html:19
+#: .\dogs\templates\dogs\comments_list.html:14
+#: .\dogs\templates\dogs\dog_comments.html:27
+#: .\dogs\templates\dogs\dog_pedigree.html:24
+#: .\dogs\templates\dogs\dogs_list.html:24
+#: .\users\templates\users\user_comments.html:23
+#: .\users\templates\users\user_dogs.html:29
 msgid "Nothing here yet!"
 msgstr ""
 
-#: .\dogs\templates\dogs\comment_form.html:8
+#: .\dogs\templates\dogs\comment_form.html:11
+msgid "Comment"
+msgstr ""
+
+#: .\dogs\templates\dogs\comment_form.html:16
 #: .\dogs\templates\dogs\dog_form.html:79
-#: .\users\templates\users\user_edit.html:14
+#: .\users\templates\users\user_edit.html:26
 msgid "Save"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:16
-#: .\users\templates\users\profile.html:48
-msgid "Action"
+#: .\dogs\templates\dogs\comments_list.html:18
+#: .\dogs\templates\dogs\dog_comments.html:31
+#: .\dogs\templates\dogs\include\sidenav.html:39
+#: .\users\templates\users\user_comments.html:27
+msgid "delete"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:20
-msgid "Edit"
+#: .\dogs\templates\dogs\comments_list.html:19
+#: .\dogs\templates\dogs\dog_comments.html:35
+msgid "approve"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:24
-#: .\dogs\templates\dogs\dog_details.html:112
-msgid "Delete"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:37
-#: .\users\templates\users\user_details.html:12
-msgid "About"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:41
-msgid "Dog name"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:43 .\dogs\views.py:124
-msgid "Breed"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:59
-msgid "Description"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:65
-#: .\dogs\templates\dogs\dog_form.html:67
-msgid "Pedigree"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:80
-#: .\users\templates\users\profile.html:27
-msgid "Comments"
-msgstr ""
-
-#: .\dogs\templates\dogs\dog_details.html:82
-#: .\dogs\templates\dogs\dogs_list.html:13
-#: .\users\templates\users\user_dogs.html:12
+#: .\dogs\templates\dogs\dog_comments.html:20
+#: .\dogs\templates\dogs\dogs_list.html:15
+#: .\users\templates\users\user_dogs.html:20
 msgid "Add"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:100
-msgid "Delete dog"
+#: .\dogs\templates\dogs\dog_details.html:24
+msgid "Dog name"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:104
-msgid "Are you sure you want to delete the dog?"
+#: .\dogs\templates\dogs\dog_details.html:26 .\dogs\views.py:153
+msgid "Breed"
 msgstr ""
 
-#: .\dogs\templates\dogs\dog_details.html:110
-#: .\users\templates\users\profile.html:120
-msgid "Cancel"
+#: .\dogs\templates\dogs\dog_details.html:29
+msgid "Birth date"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:32
+msgid "Owner"
+msgstr ""
+
+#: .\dogs\templates\dogs\dog_details.html:42
+msgid "Description"
 msgstr ""
 
 #: .\dogs\templates\dogs\dog_form.html:14
 msgid "Dog info"
 msgstr ""
 
-#: .\dogs\templates\dogs\dogs_list.html:10
+#: .\dogs\templates\dogs\dog_form.html:67
+#: .\dogs\templates\dogs\dog_pedigree.html:17
+#: .\dogs\templates\dogs\include\sidenav.html:16
+msgid "Pedigree"
+msgstr ""
+
+#: .\dogs\templates\dogs\dogs_list.html:12
 msgid "Our dogs"
 msgstr ""
 
-#: .\dogs\templates\dogs\include\dog_card.html:12
-msgid "More"
+#: .\dogs\templates\dogs\include\comment.html:11
+msgid "commented on"
 msgstr ""
 
-#: .\dogs\views.py:27
-msgid "Add dog"
+#: .\dogs\templates\dogs\include\comment.html:15
+msgid "on moderation"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\comment.html:26
+msgid "Show"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\comment.html:31
+#: .\dogs\templates\dogs\include\sidenav.html:27
+msgid "Edit"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\comment.html:39
+#: .\dogs\templates\dogs\include\sidenav.html:36
+msgid "Delete"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\comment.html:47
+msgid "Approve"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\comment.html:52
+msgid "Updated"
+msgstr ""
+
+#: .\dogs\templates\dogs\include\dog_card.html:15
+#: .\users\templates\users\include\user_card.html:9
+msgid "Details"
 msgstr ""
 
 #: .\dogs\views.py:50
+msgid "Add dog"
+msgstr ""
+
+#: .\dogs\views.py:73
 msgid "Edit dog"
 msgstr ""
 
-#: .\dogs\views.py:81
+#: .\dogs\views.py:104 .\dogs\views.py:161 .\dogs\views.py:191
 msgid "Dog"
 msgstr ""
 
-#: .\dogs\views.py:133 .\dogs\views.py:160
+#: .\dogs\views.py:217
 msgid "Add comment"
+msgstr ""
+
+#: .\dogs\views.py:241
+msgid "Edit comment"
 msgstr ""
 
 #: .\security\forms.py:11
@@ -275,11 +323,12 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: .\security\forms.py:33 .\users\templates\users\user_details.html:14
+#: .\security\forms.py:33 .\users\templates\users\user_details.html:26
 msgid "Username"
 msgstr ""
 
-#: .\security\forms.py:39 .\users\templates\users\user_details.html:15
+#: .\security\forms.py:39 .\security\forms.py:71
+#: .\users\templates\users\user_details.html:27
 msgid "Email"
 msgstr ""
 
@@ -287,16 +336,124 @@ msgstr ""
 msgid "Password confirmation"
 msgstr ""
 
-#: .\security\templates\security\signin.html:21
+#: .\security\templates\security\password_change_done.html:5
+msgid "Your password was changed."
+msgstr ""
+
+#: .\security\templates\security\password_change_form.html:6
+#: .\security\templates\security\password_reset_confirm.html:7
+#: .\security\templates\security\password_reset_form.html:15
+msgid "Error:"
+msgstr ""
+
+#: .\security\templates\security\password_change_form.html:10
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\security\templates\security\password_change_form.html:13
+msgid ""
+"Please enter your old password, for security’s sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: .\security\templates\security\password_change_form.html:43
+#: .\security\templates\security\password_reset_confirm.html:31
+msgid "Change my password"
+msgstr ""
+
+#: .\security\templates\security\password_reset_complete.html:6
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: .\security\templates\security\password_reset_complete.html:8
+#: .\security\templates\security\signup.html:22
+msgid "Log in"
+msgstr ""
+
+#: .\security\templates\security\password_reset_confirm.html:11
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: .\security\templates\security\password_reset_confirm.html:19
+msgid "New password:"
+msgstr ""
+
+#: .\security\templates\security\password_reset_confirm.html:26
+msgid "Confirm password:"
+msgstr ""
+
+#: .\security\templates\security\password_reset_confirm.html:36
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: .\security\templates\security\password_reset_done.html:6
+msgid ""
+"We’ve emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: .\security\templates\security\password_reset_done.html:8
+msgid ""
+"If you don’t receive an email, please make sure you’ve entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: .\security\templates\security\password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: .\security\templates\security\password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: .\security\templates\security\password_reset_email.html:8
+msgid "In case you’ve forgotten, you are:"
+msgstr ""
+
+#: .\security\templates\security\password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: .\security\templates\security\password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: .\security\templates\security\password_reset_form.html:10
+msgid ""
+"Forgotten your password? Enter your email address below, and we’ll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: .\security\templates\security\password_reset_form.html:18
+msgid "Reset my password"
+msgstr ""
+
+#: .\security\templates\security\registration_email.html:4
+msgid ""
+"You have just successfully registered on our website. Please, visit your "
+"profile to fill your info."
+msgstr ""
+
+#: .\security\templates\security\signin.html:16
 msgid "Forgot password?"
 msgstr ""
 
-#: .\security\templates\security\signup.html:19
-msgid "Already have account?"
+#: .\security\templates\security\signin.html:24
+msgid "No account?"
 msgstr ""
 
-#: .\security\templates\security\signup.html:20
-msgid "Log in"
+#: .\security\templates\security\signup.html:21
+msgid "Already have account?"
 msgstr ""
 
 #: .\users\admin.py:15
@@ -311,99 +468,89 @@ msgstr ""
 msgid "Important dates"
 msgstr ""
 
-#: .\users\models.py:9 .\users\templates\users\profile.html:63
+#: .\users\models.py:11 .\users\templates\users\include\sidenav.html:61
 msgid "Admin"
 msgstr ""
 
-#: .\users\models.py:10 .\users\templates\users\profile.html:72
+#: .\users\models.py:12 .\users\templates\users\include\sidenav.html:70
 msgid "Moderator"
 msgstr ""
 
-#: .\users\models.py:11 .\users\templates\users\profile.html:81
+#: .\users\models.py:13 .\users\templates\users\include\sidenav.html:79
 msgid "User"
 msgstr ""
 
-#: .\users\models.py:14 .\users\models.py:20
+#: .\users\models.py:16 .\users\models.py:44
 msgid "role"
 msgstr ""
 
-#: .\users\models.py:15
+#: .\users\models.py:17
 msgid "roles"
 msgstr ""
 
-#: .\users\models.py:19
+#: .\users\models.py:43
 msgid "email"
 msgstr ""
 
-#: .\users\models.py:21
+#: .\users\models.py:45
 msgid "phone"
 msgstr ""
 
-#: .\users\models.py:22
+#: .\users\models.py:46
 msgid "avatar"
 msgstr ""
 
-#: .\users\models.py:26
+#: .\users\models.py:51
 msgid "users"
 msgstr ""
 
-#: .\users\models.py:57
+#: .\users\models.py:118
 msgid "group"
 msgstr ""
 
-#: .\users\models.py:58
+#: .\users\models.py:119
 msgid "groups"
 msgstr ""
 
-#: .\users\templates\users\profile.html:36
-msgid "Settings"
+#: .\users\templates\users\include\sidenav.html:30
+#: .\users\templates\users\user_edit.html:18
+msgid "Edit profile"
 msgstr ""
 
-#: .\users\templates\users\profile.html:55
-msgid "Set role"
-msgstr ""
-
-#: .\users\templates\users\profile.html:92
+#: .\users\templates\users\include\sidenav.html:39
 msgid "Block"
 msgstr ""
 
-#: .\users\templates\users\profile.html:94
+#: .\users\templates\users\include\sidenav.html:41
 msgid "Unblock"
 msgstr ""
 
-#: .\users\templates\users\profile.html:106
-#, python-format
-msgid "%(text)s %(object)s"
+#: .\users\templates\users\include\sidenav.html:46
+msgid "Action"
 msgstr ""
 
-#: .\users\templates\users\profile.html:112
-#, python-format
-msgid "Are you sure you want to %(action)s %(object)s?"
+#: .\users\templates\users\include\sidenav.html:53
+msgid "Set role"
 msgstr ""
 
-#: .\users\templates\users\profile.html:123
-#, python-format
-msgid "%(text)s"
+#: .\users\templates\users\user_details.html:22
+msgid "Blocked"
 msgstr ""
 
-#: .\users\templates\users\user_comments.html:9
-msgid "My comments"
-msgstr ""
-
-#: .\users\templates\users\user_details.html:16
+#: .\users\templates\users\user_details.html:28
 msgid "First name"
 msgstr ""
 
-#: .\users\templates\users\user_details.html:17
+#: .\users\templates\users\user_details.html:29
 msgid "Last name"
 msgstr ""
 
-#: .\users\templates\users\user_details.html:18
+#: .\users\templates\users\user_details.html:30
 msgid "Phone"
 msgstr ""
 
-#: .\users\templates\users\user_dogs.html:9
-msgid "My pets"
+#: .\users\templates\users\user_edit.html:31
+msgid "Change password"
 msgstr ""
 
 #: .\users\templatetags\users\tags.py:23

@@ -1,0 +1,38 @@
+{% extends 'profile.html' %}
+{% load static %}
+{% load users.tags %}
+{% load i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
+
+{% block sidenav %}
+    {% include 'dogs/include/sidenav.html' %}
+{% endblock %}
+
+{% block details %}
+
+    <div class="d-flex flex-column flex-grow-1 p-3 shadow rounded">
+        <div class="d-flex flex-nowrap">
+            <h4 class="text-nowrap me-3">{{ object }} - {% translate 'Comments' %}</h4>
+            <a class="btn btn-w btn-outline-success ms-auto" href="{% url 'dogs:dog_comment_add' dog.id %}">
+                {% translate 'Add' %}
+            </a>
+        </div>
+        <hr>
+        {% for comment in comments %}
+            {% include 'dogs/include/comment.html' %}
+        {% empty %}
+            <h5>{% translate 'Nothing here yet!' %}</h5>
+        {% endfor %}
+    </div>
+
+    {% translate 'delete' as delete_action %}
+    {% translate 'comment' as subject %}
+    {% include 'include/modal.html' with action=delete_action subject=subject modal_id='deleteCommentModal' %}
+    {% if request.user.is_moderator %}
+        {% translate 'approve' as approve_action %}
+        {% include 'include/modal.html' with action=approve_action subject=subject modal_id='approveCommentModal' %}
+    {% endif %}
+{% endblock %}

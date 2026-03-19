@@ -1,0 +1,28 @@
+{% extends 'profile.html' %}
+{% load static %}
+{% load users.tags %}
+{% load i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
+
+{% block sidenav %}
+    {% include 'dogs/include/sidenav.html' %}
+{% endblock %}
+
+{% block details %}
+    <div class="d-flex flex-column flex-grow-1 p-3 shadow rounded">
+        <div class="d-flex flex-nowrap">
+            <h4>{{ object }} - {% translate 'Pedigree' %}</h4>
+        </div>
+        <hr>
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+            {% for dog in dogs %}
+                {% include 'dogs/include/dog_card.html' with dog=dog %}
+            {% empty %}
+                <h5>{% translate 'Nothing here yet!' %}</h5>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

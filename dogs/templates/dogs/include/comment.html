@@ -1,0 +1,59 @@
+{% load users.tags %}
+{% load i18n %}
+
+{% with user=comment.user dog_id=comment.dog_id %}
+
+    <div id="comment_{{ comment.id }}" class="d-flex flex-column bg-body-secondary rounded mt-3 p-3">
+        <div class="d-flex flex-nowrap">
+            <img class="avatar me-2" src="{% media user.avatar %}" alt="avatar">
+            <a class="me-2 fw-bolder" href="{{ user.get_absolute_url }}">{{ user.username }}</a>
+            {% if show_link %}
+                <span class="me-2">{% trans 'commented on' %}</span>
+                <a class="me-2" href="{{ comment.dog.get_absolute_url }}">{{ comment.dog }}</a>
+            {% endif %}
+            {% if not comment.is_active %}
+                <em class="me-2">{% trans 'on moderation' %}</em>
+            {% endif %}
+            <small class="ms-auto">{{ comment.created }}</small>
+        </div>
+        <hr class="my-1">
+        <p class="my-1">{{ comment.comment }}</p>
+        <hr class="my-1">
+        <div class="d-flex flex-nowrap">
+            <div class="d-inline-block">
+                {% if show_link %}
+                    <a class="small align-middle" href="{% url 'dogs:dog_comments' dog_id %}#comment_{{ comment.id }}">
+                        {% trans 'Show' %}
+                    </a>
+                {% endif %}
+                {% if request.user == user %}
+                    <a class="small align-middle ms-2" href="{% url 'dogs:dog_comment_update' dog_id comment.id %}">
+                        {% translate 'Edit' %}
+                    </a>
+                {% endif %}
+                {% if request.user == user or request.user.is_moderator %}
+                    {% url "dogs:dog_comment_delete" dog_id comment.id as delete_url %}
+                    <button class="btn btn-link btn-sm pe-0" type="button" data-bs-toggle="modal"
+                            data-bs-target="#deleteCommentModal" style="color:darkred"
+                            onclick="apply_action('{{ delete_url }}', 'deleteCommentModal')">
+                        {% translate 'Delete' %}
+                    </button>
+                {% endif %}
+                {% if request.user.is_moderator and not comment.is_active %}
+                    {% url "dogs:comment_approve" comment.id as approve_url %}
+                    <button class="btn btn-link btn-sm" type="button" data-bs-toggle="modal"
+                            data-bs-target="#approveCommentModal" style="color:darkgreen"
+                            onclick="apply_action('{{ approve_url }}', 'approveCommentModal')">
+                        {% trans 'Approve' %}
+                    </button>
+                {% endif %}
+            </div>
+            {% if comment.updated %}
+                <small class="ms-auto fst-italic">{% translate 'Updated' %}: {{ comment.updated }}</small>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+    </script>
+{% endwith %}

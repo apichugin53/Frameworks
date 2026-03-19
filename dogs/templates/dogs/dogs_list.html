@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+{% load dogs.tags %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-nowrap mt-3">
+        <h3 class="text-nowrap me-3">{% translate 'Our dogs' %}</h3>
+        {% if user.is_authenticated %}
+            <a class="btn btn-outline-success ms-auto" href="{% url 'dogs:dog_add' %}">
+                {% translate 'Add' %}
+            </a>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
+        {% for dog in object_list %}
+            {% include 'dogs/include/dog_card.html' %}
+        {% empty %}
+            <h5>{% translate 'Nothing here yet!' %}</h5>
+        {% endfor %}
+    </div>
+
+    {% if is_paginated %}
+        <div class="d-flex mt-3">
+            {% include 'pagination.html' %}
+        </div>
+    {% endif %}
+{% endblock %}

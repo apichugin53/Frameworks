@@ -15,10 +15,13 @@
                     <button type="submit" class="btn btn-outline-success mt-3 w-100">
                         {% translate 'Sign up' %}
                     </button>
-                    <small class="mt-1 d-flex">
-                        <span>{% translate 'Already have account?' %}</span>
-                        <a href="{% url 'auth:signin' %}" class="ms-auto">{% translate 'Log in' %}</a>
-                    </small>
+                    <div class="d-flex flex-column mt-2">
+                        <hr class="my-2">
+                        <small class="d-flex mx-auto">
+                            <span class="me-1">{% translate 'Already have account?' %}</span>
+                            <a href="{% url 'auth:signin' %}">{% translate 'Log in' %}</a>
+                        </small>
+                    </div>
                 </form>
             </div>
         </div>

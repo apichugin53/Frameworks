@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'dogs/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    {% for breed in object_list %}
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{ breed.get_absolute_url }}">{{ breed.name }}</a></h5>
+                <p class='breed-card'>{{ breed.description }}</p>
+            </div>
+        </div>
+    {% empty %}
+        <p>{% translate 'Nothing here yet!' %}</p>
+    {% endfor %}
+
+    {% if is_paginated %}
+        <div class="d-flex mt-3">
+            {% include 'pagination.html' %}
+        </div>
+    {% endif %}
+
+{% endblock %}

@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model, login
-from django.contrib.auth.views import LoginView, RedirectURLMixin
+from django.contrib.auth.views import (LoginView, RedirectURLMixin, PasswordResetView, PasswordResetDoneView,
+                                       PasswordResetConfirmView, PasswordResetCompleteView, PasswordChangeView,
+                                       PasswordChangeDoneView)
 from django.shortcuts import redirect, resolve_url
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import CreateView
 from django.utils.translation import gettext_lazy as _
 
-from security.forms import SignUpForm, SignInForm
+from security.forms import SignUpForm, SignInForm, PwdResetForm
 
 User = get_user_model()
 
@@ -40,3 +42,28 @@ class SignUpView(RedirectURLMixin, CreateView):
         result = super().form_valid(form)
         login(self.request, self.object)
         return result
+
+
+class PwdResetView(PasswordResetView):
+    email_template_name = "security/password_reset_email.html"
+    template_name = 'security/password_reset_form.html'
+    success_url = reverse_lazy('auth:password_reset_done')
+    form_class = PwdResetForm
+
+
+class PwdResetDoneView(PasswordResetDoneView):
+    template_name = 'security/password_reset_done.html'
+
+
+class PwdResetConfirmView(PasswordResetConfirmView):
+    template_name = 'security/password_reset_confirm.html'
+    success_url = reverse_lazy('auth:password_reset_complete')
+
+
+class PwdResetCompleteView(PasswordResetCompleteView):
+    template_name = 'security/password_reset_complete.html'
+
+
+class PwdChangeView(PasswordChangeView):
+    template_name = 'security/password_change_form.html'
+    success_url = reverse_lazy('users:profile_edit')
