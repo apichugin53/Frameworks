@@ -1,0 +1,28 @@
+{% load i18n %}
+<div id="{{ modal_id }}" class="modal" tabindex="-1" aria-labelledby="{{ modal_id }}Label">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="{{ modal_id }}Label">
+                    {{ action|capfirst }} {{ subject }}
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>&#x26A0; {% blocktrans %}Are you sure you want to {{ action }} {{ subject }}?{% endblocktrans %}</p>
+            </div>
+            <div class="modal-footer">
+                <form id="form_{{ modal_id }}" method="POST" action="{{ submit_url|default:'#' }}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next_page }}">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-dismiss="modal">
+                        {% trans 'Cancel' %}
+                    </button>
+                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                        {{ action|capfirst }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

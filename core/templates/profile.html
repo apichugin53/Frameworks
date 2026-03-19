@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="d-flex flex-row flex-wrap flex-sm-nowrap gap-3">
+        {% block sidenav %}{% endblock %}
+        <div class="d-flex flex-column flex-grow-1">
+            {% block details %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

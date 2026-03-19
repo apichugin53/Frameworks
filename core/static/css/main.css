@@ -1,0 +1,39 @@
+html, body {
+  height: 100dvh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  min-height: 2.5rem;
+}
+
+.logo {
+  min-width: 2rem;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  border: 1px solid green;
+  border-radius: 50%;
+}
+
+.side-nav {
+  min-width: 220px;
+}
+
+.photo {
+  width: 250px;
+  height: 250px;
+}
+
+@media (max-width: 576px) {
+  .side-nav {
+    flex-grow: 1;
+  }
+}
