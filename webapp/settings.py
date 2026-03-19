@@ -1,22 +1,27 @@
-import environ
 from pathlib import Path
+
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
     DEBUG=(bool, False),
-    USE_CACHE=(bool, False),
     USE_DEBUG_TOOLBAR=(bool, False),
-    SERVER_HOSTS=(str, '')
+    USE_LOGGING=(bool, False),
+    USE_CACHE=(bool, False),
+    SERVER_HOSTS=(str, ''),
 )
 
 environ.Env.read_env(BASE_DIR / '.env', parse_comments=True)
 
 DEBUG = env('DEBUG')
-USE_CACHE = env('USE_CACHE') and not DEBUG
 USE_DEBUG_TOOLBAR = env('USE_DEBUG_TOOLBAR') and DEBUG
+USE_LOGGING = env('USE_LOGGING') and DEBUG
+USE_CACHE = env('USE_CACHE') and not DEBUG
 SERVER_HOSTS = list(filter(None, env('SERVER_HOSTS').split(' ')))
+
+DEFAULT_FROM_EMAIL='noreply@example.com'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
@@ -26,10 +31,11 @@ SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = SERVER_HOSTS
 
-INTERNAL_IPS = [
-    '127.0.0.1',
-    'localhost',
-]
+if USE_DEBUG_TOOLBAR:
+    INTERNAL_IPS = [
+        '127.0.0.1',
+        'localhost',
+    ]
 
 # Application definition
 
@@ -86,6 +92,8 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+DATABASE_OPTIONS = env.dict('DATABASE_OPTIONS', default={})
+
 DATABASES = {
     'default': {
         'ENGINE': env('DATABASE_ENGINE', default='mssql'),
@@ -94,6 +102,9 @@ DATABASES = {
         'NAME': env('DATABASE_NAME', default='django_app_db'),
         'USER': env('DATABASE_USER', default=''),
         'PASSWORD': env('DATABASE_PASSWORD', default=''),
+        'OPTIONS': {
+            **DATABASE_OPTIONS
+        }
     }
 }
 
@@ -142,7 +153,7 @@ LOGOUT_REDIRECT_URL = 'auth:signin'
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 USE_I18N = True
 
@@ -171,3 +182,31 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+if DEBUG and USE_LOGGING:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'filters': {
+            'require_debug_true': {
+                '()': 'django.utils.log.RequireDebugTrue',
+            }
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'filters': ['require_debug_true'],
+                'class': 'logging.StreamHandler',
+            }
+        },
+        'loggers': {
+            'django.request': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+            },
+            'django.db.backends': {
+                'handlers': ['console'],
+                'level': 'DEBUG',
+            }
+        }
+    }

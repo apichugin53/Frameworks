@@ -1,0 +1,12 @@
+.user-card {
+  --card-height: 160px;
+  --card-width: 300px;
+
+  height: var(--card-height);
+  width: var(--card-width);
+}
+
+.user-photo {
+  height: calc(var(--card-height) - 1rem);
+  width: var(--card-height);
+}

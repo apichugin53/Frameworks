@@ -1,0 +1,13 @@
+{% load i18n %}
+
+<div class="d-flex flex-row shadow rounded user-card">
+    <img class="user-photo object-fit-cover ms-2 my-auto border rounded" src="{{ image_url }}" alt="photo">
+    <div class="d-flex flex-column flex-grow-1 m-2">
+        <strong>{{ caption }}</strong>
+        <em>{{ details }}</em>
+        <a href="{{ details_url }}" class="btn btn-sm btn-outline-primary ms-auto mt-auto">
+            {% translate 'Details' %}
+        </a>
+    </div>
+</div>
+

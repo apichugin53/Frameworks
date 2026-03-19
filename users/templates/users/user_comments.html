@@ -1,0 +1,31 @@
+{% extends 'profile.html' %}
+{% load static %}
+{% load users.tags %}
+{% load i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock %}
+
+{% block sidenav %}
+    {% include 'users/include/sidenav.html' %}
+{% endblock %}
+
+{% block details %}
+    <div class="d-flex flex-column flex-grow-1 p-3 shadow rounded">
+        <div class="d-flex flex-nowrap">
+            <h4 class="text-nowrap me-3">{{ object.username }} - {% translate 'Comments' %}</h4>
+        </div>
+        <hr>
+        {% for comment in comments %}
+            {% include 'dogs/include/comment.html' with show_link=True %}
+        {% empty %}
+            <h5>{% translate 'Nothing here yet!' %}</h5>
+        {% endfor %}
+    </div>
+
+    {% translate 'delete' as action %}
+    {% translate 'comment' as subject %}
+    {% include 'include/modal.html' with action=action subject=subject modal_id='deleteCommentModal' submit_url=url %}
+
+{% endblock %}

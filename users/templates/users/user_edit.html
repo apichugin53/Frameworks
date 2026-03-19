@@ -1,0 +1,35 @@
+{% extends 'profile.html' %}
+{% load static %}
+{% load users.tags %}
+{% load i18n %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock %}
+
+{% block sidenav %}
+    {% include 'users/include/sidenav.html' %}
+{% endblock %}
+
+{% block details %}
+    <div class="d-flex flex-column flex-grow-1 p-3 shadow rounded">
+        <div class="d-flex flex-nowrap">
+            <h4 class="text-nowrap me-3 align-content-center">
+                {{ object.username }} - {% translate 'Edit profile' %}
+            </h4>
+        </div>
+        <hr>
+        <form action="{% url 'users:profile_edit' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <hr>
+            <button type="submit" class="btn btn-outline-success">{% trans 'Save' %}</button>
+        </form>
+        <hr>
+        <div>
+            <a class="btn btn-outline-danger" href="{% url 'auth:password_change' %}">
+                {% trans 'Change password' %}
+            </a>
+        </div>
+    </div>
+{% endblock %}
