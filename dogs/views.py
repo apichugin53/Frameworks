@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.db.models.query_utils import Q
 from django.shortcuts import resolve_url, get_object_or_404
 from django.urls.base import reverse, reverse_lazy
+from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -14,7 +15,7 @@ from dogs.models import Dog, Breed, Comment
 from users.models import Role
 
 
-class DogsListView(ListView):
+class DogsListView(LoginRequiredMixin, ListView):
     model = Dog
     template_name = 'dogs/dogs_list.html'
     extra_context = {
@@ -136,7 +137,7 @@ class DogDeleteView(LoginRequiredMixin, DeleteView):
         raise PermissionDenied
 
 
-class BreedsListView(ListView):
+class BreedsListView(LoginRequiredMixin, ListView):
     model = Breed
     template_name = 'dogs/breeds_list.html'
     extra_context = {
@@ -165,7 +166,7 @@ class DogPedigreeView(LoginRequiredMixin, DetailView):
         dog = self.object
         actor = self.request.user
         context = {
-            'can_edit': actor.can_edit_user(dog.owner),
+            'can_edit': actor.can_edit_user(dog.owner_id),
             'dogs': Dog.objects.filter(id__in=dog.ancestors.all().values('ancestor')),
             **kwargs,
         }
@@ -200,7 +201,7 @@ class DogCommentListView(LoginRequiredMixin, DetailView):
                 Q(is_active=True) | Q(user=self.request.user)
             )
         context = {
-            'can_edit': actor.can_edit_user(dog.owner),
+            'can_edit': actor.can_edit_user(dog.owner_id),
             'comments': comments.select_related('user'),
             **kwargs,
         }
@@ -288,7 +289,7 @@ class CommentListView(LoginRequiredMixin, ModeratorAccessMixin, ListView):
     }
 
     def get_queryset(self):
-        return super().get_queryset().filter(is_active=False).select_related('user', 'dog')
+        return super().get_queryset().filter(is_active=False).select_related('user', 'dog', 'dog__breed')
 
 class ApproveCommentView(LoginRequiredMixin, ModeratorAccessMixin, CommentRedirectMixin, UpdateView):
     model = Comment

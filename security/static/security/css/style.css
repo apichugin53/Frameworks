@@ -2,8 +2,16 @@
   width: 100%;
 }
 
+.help {
+  width: 100%;
+}
+
 @media only screen and (min-width: 500px) {
   .auth-form {
     width: 24rem;
+  }
+
+  .help {
+    width: 80%;
   }
 }

@@ -1,11 +1,10 @@
+from django.conf import settings
 from django.db import models
 from django.db.models.expressions import F
 from django.db.models.functions import Coalesce
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-
-from webapp import settings
 
 
 class Breed(models.Model):
@@ -23,6 +22,11 @@ class Breed(models.Model):
         return reverse("dogs:breed_details", kwargs={"pk": self.id})
 
 
+class DogManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().select_related('breed')
+
+
 class Dog(models.Model):
     name = models.CharField(_('dog name'), max_length=64)
     breed = models.ForeignKey(Breed, on_delete=models.CASCADE, verbose_name=_('breed'))
@@ -31,6 +35,7 @@ class Dog(models.Model):
     photo = models.ImageField(_('photo'), upload_to='dogs/', blank=True, null=True)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('owner'), on_delete=models.SET_NULL, blank=True, null=True)
     views = models.PositiveIntegerField(_('views'), blank=True, default=0)
+    objects = DogManager()
 
     def __str__(self):
         return f'{self.name} ({self.breed})'

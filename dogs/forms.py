@@ -3,10 +3,10 @@ import datetime
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.db import transaction
-from django.db.models import F
 from django.forms import ModelForm, CharField
 from django.forms.models import inlineformset_factory, BaseInlineFormSet
 from django.forms.widgets import TextInput, Textarea, Select, DateInput, NumberInput, HiddenInput
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from core.widgets import ImageFileInput
@@ -44,8 +44,8 @@ class DogForm(ModelForm):
     def clean_birth_date(self):
         birth_date = self.cleaned_data['birth_date']
         if birth_date:
-            now = datetime.datetime.today().date()
-            before = datetime.date(now.year - 20, now.month, now.day)
+            now = timezone.now().date()
+            before = now - datetime.timedelta(days=365 * 20)
             if birth_date > now:
                 raise ValidationError(_('Birth date must not be in the future'))
             if birth_date < before:
@@ -102,6 +102,7 @@ PedigreeFormSet = pedigree_formset_factory()
 class CommentForm(ModelForm):
     comment = CharField(label='', widget=Textarea(attrs={'class': 'form-control description'}))
     next = CharField(widget=HiddenInput(), required=False)
+    error_css_class = 'error-wrapper'
 
     class Meta:
         model = Comment
@@ -110,6 +111,7 @@ class CommentForm(ModelForm):
 
 class ApproveCommentForm(ModelForm):
     next = CharField(widget=HiddenInput(), required=False)
+
     class Meta:
         model = Comment
         fields = ('next',)

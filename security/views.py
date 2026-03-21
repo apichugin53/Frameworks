@@ -1,13 +1,13 @@
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import (LoginView, RedirectURLMixin, PasswordResetView, PasswordResetDoneView,
-                                       PasswordResetConfirmView, PasswordResetCompleteView, PasswordChangeView,
-                                       PasswordChangeDoneView)
+                                       PasswordResetConfirmView, PasswordResetCompleteView, PasswordChangeView)
+from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import redirect, resolve_url
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from django.utils.translation import gettext_lazy as _
 
-from security.forms import SignUpForm, SignInForm, PwdResetForm
+from security.forms import SignUpForm, SignInForm, PwdResetForm, PwdChangeForm, PasswordForm
 
 User = get_user_model()
 
@@ -39,9 +39,14 @@ class SignUpView(RedirectURLMixin, CreateView):
         return resolve_url(self.success_url)
 
     def form_valid(self, form):
-        result = super().form_valid(form)
+        current_site = get_current_site(self.request)
+        form_kwargs = {
+            'domain': current_site.domain,
+            "protocol": "http",
+        }
+        self.object = form.save(commit=True, **form_kwargs)
         login(self.request, self.object)
-        return result
+        return redirect(self.get_success_url())
 
 
 class PwdResetView(PasswordResetView):
@@ -49,21 +54,38 @@ class PwdResetView(PasswordResetView):
     template_name = 'security/password_reset_form.html'
     success_url = reverse_lazy('auth:password_reset_done')
     form_class = PwdResetForm
-
-
-class PwdResetDoneView(PasswordResetDoneView):
-    template_name = 'security/password_reset_done.html'
+    extra_context = {
+        'title': _('Reset password'),
+    }
 
 
 class PwdResetConfirmView(PasswordResetConfirmView):
     template_name = 'security/password_reset_confirm.html'
     success_url = reverse_lazy('auth:password_reset_complete')
+    form_class = PasswordForm
+    extra_context = {
+        'title': _('Reset password')
+    }
+
+
+class PwdResetDoneView(PasswordResetDoneView):
+    template_name = 'security/password_reset_done.html'
+    extra_context = {
+        'title': _('Reset password')
+    }
 
 
 class PwdResetCompleteView(PasswordResetCompleteView):
     template_name = 'security/password_reset_complete.html'
+    extra_context = {
+        'title': _('Reset password')
+    }
 
 
 class PwdChangeView(PasswordChangeView):
     template_name = 'security/password_change_form.html'
     success_url = reverse_lazy('users:profile_edit')
+    form_class = PwdChangeForm
+    extra_context = {
+        'title': _('Password change')
+    }

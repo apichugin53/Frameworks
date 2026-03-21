@@ -151,7 +151,7 @@ class UserCommentsView(LoginRequiredMixin, ModerationMixin, SelfMixin, DetailVie
 
     def get_context_data(self, **kwargs):
         context = {
-            'comments': self.object.comment_set.all().select_related('dog'),
+            'comments': self.object.comment_set.all().select_related('dog', 'dog__breed'),
             **kwargs,
         }
         return super().get_context_data(**context)

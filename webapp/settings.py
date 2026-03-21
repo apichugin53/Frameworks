@@ -18,7 +18,7 @@ environ.Env.read_env(BASE_DIR / '.env', parse_comments=True)
 DEBUG = env('DEBUG')
 USE_DEBUG_TOOLBAR = env('USE_DEBUG_TOOLBAR') and DEBUG
 USE_LOGGING = env('USE_LOGGING') and DEBUG
-USE_CACHE = env('USE_CACHE') and not DEBUG
+USE_CACHE = env('USE_CACHE') or not DEBUG
 SERVER_HOSTS = list(filter(None, env('SERVER_HOSTS').split(' ')))
 
 DEFAULT_FROM_EMAIL='noreply@example.com'

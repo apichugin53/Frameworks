@@ -11,6 +11,8 @@ User = get_user_model()
 
 
 class UserEditForm(ModelForm):
+    error_css_class = 'error-wrapper'
+
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'phone', 'avatar')
@@ -24,6 +26,7 @@ class UserEditForm(ModelForm):
 
 class UserRoleForm(ModelForm):
     role = forms.CharField(widget=HiddenInput())
+
     class Meta:
         model = User
         fields = ('role',)

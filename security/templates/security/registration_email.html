@@ -1,5 +1,6 @@
 {% load i18n %}
-<h3>Hi, {{ username }}!</h3>
-<p>
-    {% translate 'You have just successfully registered on our website. Please, visit your profile to fill your info.' %}
-</p>
+<h3>Hi, {{ user }}!</h3>
+<p>{% trans 'You have just successfully registered on our website.' %}</p>
+<p>{% url 'users:profile' as profile_url %}{% blocktranslate %}
+Please, visit your <a href='{{ protocol }}://{{ domain }}{{ profile_url }}'>profile</a> to fill your info.
+{% endblocktranslate %}</p>

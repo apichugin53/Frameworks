@@ -1,0 +1,37 @@
+[
+  {
+    "username": "admin",
+    "password": "password",
+    "email": "admin@example.com",
+    "avatar": "users/admin.jpg",
+    "role": "ADMIN"
+  },
+  {
+    "username": "manager",
+    "password": "password",
+    "email": "manager@example.com",
+    "avatar": "users/moderator.jpg",
+    "role": "MODERATOR"
+  },
+  {
+    "username": "user",
+    "password": "password",
+    "email": "user@example.com",
+    "avatar": "users/user.jpg",
+    "role": "USER"
+  },
+  {
+    "username": "user2",
+    "password": "password",
+    "email": "user2@example.com",
+    "avatar": "users/user2.jpg",
+    "role": "USER"
+  },
+  {
+    "username": "root",
+    "password": "password",
+    "email": "root@example.com",
+    "avatar": null,
+    "role": "ADMIN"
+  }
+]

@@ -1,0 +1,466 @@
+[
+  {
+    "model": "dogs.breed",
+    "pk": 1,
+    "fields": {
+      "name": "Колли",
+      "description": "Как правило, колли — собаки среднего размера, весом от 22 до 32 кг, с лёгким или средним костяком. Колли — рабочие собаки, очень активные, энергичные, выносливые. Отличные пастухи, они могут весь день бежать по пересечённой местности, не зная усталости. Колли демонстрируют интерес и тягу к работе на уровне инстинктов."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 2,
+    "fields": {
+      "name": "Терьер",
+      "description": "Терьеры сильно варьируются по внешнему виду от очень маленьких, легких, гладкошерстных собак, таких как английский тойтерьер (чёрный с яркими подпалинами), который весит всего 2,7 кг (6 фунтов), до очень крупных эрдельтерьеров с грубой шерстью, которые могут достигать 32 кг (70 фунтов) или более."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 3,
+    "fields": {
+      "name": "Такса",
+      "description": "Существует несколько разновидностей такс, отличающихся размерами и весом — стандартные, миниатюрные и кроличьи. Также такс разделяют по шёрстному покрову на гладкошерстных, длинношёрстных и жесткошёрстных."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 4,
+    "fields": {
+      "name": "Доберман",
+      "description": "Доберман — это крупная собака мускулистого, но стройного телосложения, производящая впечатление собранного, динамичного, активного животного. В судейской выставочной оценке важную роль играет гармоничность сложения животного и чёткость линий силуэта."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 5,
+    "fields": {
+      "name": "Лабрадор-ретривер",
+      "description": "С хорошим характером, очень подвижный. Гиперактивный, если правильно с ним заниматься. Превосходное чутьё, мягкая хватка (мягкая пасть), позволяющая не мять птицу при подаче, страсть к воде. Хороший и страстный охотник."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 6,
+    "fields": {
+      "name": "Акита-ину",
+      "description": "Акита-ину – одна из древнейших пород собак на Земле, выведена в северных регионах Японии. Это гордый, сильный и преданный питомец."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 7,
+    "fields": {
+      "name": "Аляскинский маламут",
+      "description": "Аляскинский маламут – древняя порода, выведенная эскимосами племени малемьют. Крупные и выносливые, маламуты предназначены для работы в собачьих упряжках в регионах Крайнего Севера."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 8,
+    "fields": {
+      "name": "Барбет",
+      "description": "Другие названия: французская водяная собака\r\n\r\nБарбет – старинная порода французских водяных собак, восстановленная современными заводчиками. Обладает густой непромокаемой шерстью и хорошо чувствует себя в воде. В прошлом барбет зарекомендовал себя как охотничью и сторожевую собаку."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 9,
+    "fields": {
+      "name": "Бигль",
+      "description": "Бигль относится к гончим породам собак. Этот весёлый добряк станет отличным другом: любящим, терпеливым и, что важно, неприхотливым в уходе."
+    }
+  },
+  {
+    "model": "dogs.breed",
+    "pk": 10,
+    "fields": {
+      "name": "Боксер",
+      "description": "Другие названия: немецкий боксёр\r\nНемецкий боксёр, или просто боксер – представитель крупной, коренастой и гладкошерстной породы. Выведенный в Германии, он получил широкую известность благодаря отличным охранным качествам. Боксер становится для своего хозяина прекрасным компаньоном и настоящим другом."
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 1,
+    "fields": {
+      "name": "Бобик",
+      "breed": 3,
+      "birth_date": "2024-03-21",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/taksa_NYkbq8v.jpg",
+      "owner": 2,
+      "views": 179
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 2,
+    "fields": {
+      "name": "Люси",
+      "breed": 1,
+      "birth_date": "2025-02-24",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/kolli_38TkHMx.jpg",
+      "owner": 1,
+      "views": 35
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 3,
+    "fields": {
+      "name": "Жучка",
+      "breed": 3,
+      "birth_date": "2025-04-04",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/taksa_OUo65pp.jpg",
+      "owner": 3,
+      "views": 13
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 4,
+    "fields": {
+      "name": "Тузик",
+      "breed": 3,
+      "birth_date": "2025-12-30",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/taksa_Ij8JkBz.jpg",
+      "owner": 3,
+      "views": 18
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 5,
+    "fields": {
+      "name": "Шарик",
+      "breed": 2,
+      "birth_date": "2024-05-21",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/teryer.jpg",
+      "owner": 3,
+      "views": 5
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 6,
+    "fields": {
+      "name": "Черныш",
+      "breed": 4,
+      "birth_date": null,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/Dobermann.jpg",
+      "owner": 4,
+      "views": 10
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 7,
+    "fields": {
+      "name": "Ева",
+      "breed": 5,
+      "birth_date": "2023-01-19",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "photo": "dogs/лабрадор.webp",
+      "owner": 5,
+      "views": 0
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 8,
+    "fields": {
+      "name": "Бранд",
+      "breed": 5,
+      "birth_date": "2019-04-16",
+      "description": "",
+      "photo": "dogs/labrador.jpg",
+      "owner": 5,
+      "views": 2
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 9,
+    "fields": {
+      "name": "Мелкий",
+      "breed": 5,
+      "birth_date": "2026-01-29",
+      "description": "",
+      "photo": "dogs/labrador2.jpg",
+      "owner": 5,
+      "views": 1
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 10,
+    "fields": {
+      "name": "Чаппи",
+      "breed": 2,
+      "birth_date": "2022-03-02",
+      "description": "",
+      "photo": "dogs/teryer2.jpg",
+      "owner": 4,
+      "views": 1
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 11,
+    "fields": {
+      "name": "Пёс",
+      "breed": 2,
+      "birth_date": "2021-07-11",
+      "description": "",
+      "photo": "dogs/teryer3.jpg",
+      "owner": 4,
+      "views": 1
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 12,
+    "fields": {
+      "name": "Бигль",
+      "breed": 9,
+      "birth_date": "2025-10-27",
+      "description": "",
+      "photo": "dogs/бигль.jpg",
+      "owner": 2,
+      "views": 13
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 13,
+    "fields": {
+      "name": "Балбес",
+      "breed": 7,
+      "birth_date": "2022-09-06",
+      "description": "",
+      "photo": "dogs/маламут.jpg",
+      "owner": 4,
+      "views": 12
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 14,
+    "fields": {
+      "name": "Рекс",
+      "breed": 7,
+      "birth_date": "2022-03-12",
+      "description": "",
+      "photo": "dogs/маламут2.jpg",
+      "owner": 4,
+      "views": 2
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 15,
+    "fields": {
+      "name": "Рекс",
+      "breed": 10,
+      "birth_date": "2020-03-10",
+      "description": "",
+      "photo": "dogs/boxer.webp",
+      "owner": 1,
+      "views": 1
+    }
+  },
+  {
+    "model": "dogs.dog",
+    "pk": 17,
+    "fields": {
+      "name": "qwe",
+      "breed": 1,
+      "birth_date": null,
+      "description": "",
+      "photo": "",
+      "owner": null,
+      "views": 4
+    }
+  },
+  {
+    "model": "dogs.pedigree",
+    "pk": 1,
+    "fields": {
+      "ancestor": 1,
+      "descendant": 4
+    }
+  },
+  {
+    "model": "dogs.pedigree",
+    "pk": 3,
+    "fields": {
+      "ancestor": 3,
+      "descendant": 4
+    }
+  },
+  {
+    "model": "dogs.pedigree",
+    "pk": 4,
+    "fields": {
+      "ancestor": 8,
+      "descendant": 9
+    }
+  },
+  {
+    "model": "dogs.pedigree",
+    "pk": 5,
+    "fields": {
+      "ancestor": 7,
+      "descendant": 9
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 2,
+    "fields": {
+      "comment": "Kind of awesome comment",
+      "user": 2,
+      "dog": 1,
+      "created": "2026-03-14T00:42:10.159Z",
+      "updated": "2026-03-19T01:51:44.885Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 3,
+    "fields": {
+      "comment": "My another comment!",
+      "user": 3,
+      "dog": 1,
+      "created": "2026-03-14T01:48:07.775Z",
+      "updated": "2026-03-19T01:51:55.025Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 4,
+    "fields": {
+      "comment": "New comment.",
+      "user": 3,
+      "dog": 2,
+      "created": "2026-03-14T01:47:45.401Z",
+      "updated": "2026-03-15T16:43:47.072Z",
+      "is_active": false
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 8,
+    "fields": {
+      "comment": "Чудик...",
+      "user": 1,
+      "dog": 13,
+      "created": "2026-03-16T00:40:25.531Z",
+      "updated": "2026-03-19T01:51:57.237Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 12,
+    "fields": {
+      "comment": "It's my dog",
+      "user": 1,
+      "dog": 2,
+      "created": "2026-03-18T21:11:58.884Z",
+      "updated": "2026-03-19T01:51:47.140Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 13,
+    "fields": {
+      "comment": "puppy",
+      "user": 1,
+      "dog": 9,
+      "created": "2026-03-18T21:12:59.413Z",
+      "updated": "2026-03-19T01:51:48.770Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 14,
+    "fields": {
+      "comment": "test test",
+      "user": 1,
+      "dog": 1,
+      "created": "2026-03-18T21:57:41.653Z",
+      "updated": "2026-03-19T01:51:52.319Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 15,
+    "fields": {
+      "comment": "test",
+      "user": 4,
+      "dog": 12,
+      "created": "2026-03-18T21:58:12.156Z",
+      "updated": "2026-03-19T01:51:42.639Z",
+      "is_active": true
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 16,
+    "fields": {
+      "comment": "test1",
+      "user": 4,
+      "dog": 13,
+      "created": "2026-03-18T22:06:16.676Z",
+      "updated": "2026-03-18T21:11:58.884Z",
+      "is_active": false
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 17,
+    "fields": {
+      "comment": "test2",
+      "user": 4,
+      "dog": 12,
+      "created": "2026-03-18T22:16:23.886Z",
+      "updated": "2026-03-18T22:49:28.595Z",
+      "is_active": false
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 18,
+    "fields": {
+      "comment": "test3",
+      "user": 3,
+      "dog": 12,
+      "created": "2026-03-18T22:21:32.604Z",
+      "updated": "2026-03-18T22:53:07.820Z",
+      "is_active": false
+    }
+  },
+  {
+    "model": "dogs.comment",
+    "pk": 21,
+    "fields": {
+      "comment": "test",
+      "user": 4,
+      "dog": 8,
+      "created": "2026-03-18T22:57:48.531Z",
+      "updated": "2026-03-19T01:51:40.337Z",
+      "is_active": true
+    }
+  }
+]

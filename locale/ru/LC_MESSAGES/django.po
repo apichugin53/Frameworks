@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-19 04:33+0300\n"
+"POT-Creation-Date: 2026-03-20 21:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,13 +37,36 @@ msgstr "Вы уверены, что хотите %(action)s %(subject)s?"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: .\core\templates\layout.html:26 .\dogs\views.py:21
+#: .\core\templates\index.html:13
+msgid "Our last added dogs"
+msgstr "Наши последние добавленные собаки"
+
+#: .\core\templates\index.html:20 .\core\templates\index.html:38
+#: .\dogs\templates\dogs\breeds_list.html:22
+#: .\dogs\templates\dogs\comments_list.html:14
+#: .\dogs\templates\dogs\dog_comments.html:27
+#: .\dogs\templates\dogs\dog_pedigree.html:24
+#: .\dogs\templates\dogs\dogs_list.html:24
+#: .\users\templates\users\user_comments.html:23
+#: .\users\templates\users\user_dogs.html:29
+msgid "Nothing here yet!"
+msgstr "Здесь пока ничего нет!"
+
+#: .\core\templates\index.html:23 .\core\templates\index.html:41
+msgid "More"
+msgstr "Больше"
+
+#: .\core\templates\index.html:31
+msgid "Most recently joined users"
+msgstr "Последние присоединившиеся пользователи"
+
+#: .\core\templates\layout.html:26 .\dogs\views.py:22
 #: .\users\templates\users\include\sidenav.html:16
 #: .\users\templates\users\user_dogs.html:17
 msgid "Dogs"
 msgstr "Собаки"
 
-#: .\core\templates\layout.html:29 .\dogs\views.py:143
+#: .\core\templates\layout.html:29 .\dogs\views.py:144
 msgid "Breeds"
 msgstr "Породы"
 
@@ -53,7 +76,7 @@ msgstr "Пользователи"
 
 #: .\core\templates\layout.html:36 .\dogs\templates\dogs\comments_list.html:7
 #: .\dogs\templates\dogs\dog_comments.html:18
-#: .\dogs\templates\dogs\include\sidenav.html:21 .\dogs\views.py:287
+#: .\dogs\templates\dogs\include\sidenav.html:21 .\dogs\views.py:288
 #: .\users\templates\users\include\sidenav.html:21
 #: .\users\templates\users\user_comments.html:17
 msgid "Comments"
@@ -99,109 +122,99 @@ msgstr "Дата рождения не может быть больше теку
 msgid "Birth date must not be older than 20 years ago"
 msgstr "Дата рождения не должна быть старше 20 лет"
 
-#: .\dogs\models.py:12
+#: .\dogs\models.py:11
 msgid "name"
 msgstr "имя"
 
-#: .\dogs\models.py:13 .\dogs\models.py:30
+#: .\dogs\models.py:12 .\dogs\models.py:34
 msgid "description"
 msgstr "описание"
 
-#: .\dogs\models.py:16 .\dogs\models.py:28
+#: .\dogs\models.py:15 .\dogs\models.py:32
 msgid "breed"
 msgstr "порода"
 
-#: .\dogs\models.py:17
+#: .\dogs\models.py:16
 msgid "breeds"
 msgstr "породы"
 
-#: .\dogs\models.py:27
+#: .\dogs\models.py:31
 msgid "dog name"
 msgstr "кличка"
 
-#: .\dogs\models.py:29
+#: .\dogs\models.py:33
 msgid "birth date"
 msgstr "дата рождения"
 
-#: .\dogs\models.py:31
+#: .\dogs\models.py:35
 msgid "photo"
 msgstr "фото"
 
-#: .\dogs\models.py:32
+#: .\dogs\models.py:36
 msgid "owner"
 msgstr "владелец"
 
-#: .\dogs\models.py:33
+#: .\dogs\models.py:37
 msgid "views"
 msgstr "просмотры"
 
-#: .\dogs\models.py:39 .\dogs\models.py:87
+#: .\dogs\models.py:44 .\dogs\models.py:92
 msgid "dog"
 msgstr "собака"
 
-#: .\dogs\models.py:40
+#: .\dogs\models.py:45
 msgid "dogs"
 msgstr "собаки"
 
-#: .\dogs\models.py:74
+#: .\dogs\models.py:79
 msgid "ancestor"
 msgstr "предок"
 
-#: .\dogs\models.py:76
+#: .\dogs\models.py:81
 msgid "descendant"
 msgstr "потомок"
 
-#: .\dogs\models.py:80
+#: .\dogs\models.py:85
 msgid "pedigree"
 msgstr "родословная"
 
-#: .\dogs\models.py:81
+#: .\dogs\models.py:86
 msgid "pedigrees"
 msgstr "родословные"
 
-#: .\dogs\models.py:85 .\dogs\models.py:93
+#: .\dogs\models.py:90 .\dogs\models.py:98
 #: .\dogs\templates\dogs\comments_list.html:20
 #: .\dogs\templates\dogs\dog_comments.html:32
 #: .\users\templates\users\user_comments.html:28
 msgid "comment"
 msgstr "комментарий"
 
-#: .\dogs\models.py:86 .\users\models.py:50
+#: .\dogs\models.py:91 .\users\models.py:47
 msgid "user"
 msgstr "пользователь"
 
-#: .\dogs\models.py:88
+#: .\dogs\models.py:93
 msgid "created"
 msgstr "создан"
 
-#: .\dogs\models.py:89
+#: .\dogs\models.py:94
 msgid "updated"
 msgstr "изменен"
 
-#: .\dogs\models.py:90
+#: .\dogs\models.py:95
 msgid "active"
 msgstr "активный"
 
-#: .\dogs\models.py:94
+#: .\dogs\models.py:99
 msgid "comments"
 msgstr "комментарии"
-
-#: .\dogs\templates\dogs\breeds_list.html:19
-#: .\dogs\templates\dogs\comments_list.html:14
-#: .\dogs\templates\dogs\dog_comments.html:27
-#: .\dogs\templates\dogs\dog_pedigree.html:24
-#: .\dogs\templates\dogs\dogs_list.html:24
-#: .\users\templates\users\user_comments.html:23
-#: .\users\templates\users\user_dogs.html:29
-msgid "Nothing here yet!"
-msgstr "Здесь пока ничего нет!"
 
 #: .\dogs\templates\dogs\comment_form.html:11
 msgid "Comment"
 msgstr "Комментарий"
 
 #: .\dogs\templates\dogs\comment_form.html:16
-#: .\dogs\templates\dogs\dog_form.html:79
+#: .\dogs\templates\dogs\dog_form.html:77
 #: .\users\templates\users\user_edit.html:26
 msgid "Save"
 msgstr "Сохранить"
@@ -228,7 +241,7 @@ msgstr "Добавить"
 msgid "Dog name"
 msgstr "Кличка"
 
-#: .\dogs\templates\dogs\dog_details.html:26 .\dogs\views.py:153
+#: .\dogs\templates\dogs\dog_details.html:26 .\dogs\views.py:154
 msgid "Breed"
 msgstr "Порода"
 
@@ -289,55 +302,70 @@ msgid "Updated"
 msgstr "Изменено"
 
 #: .\dogs\templates\dogs\include\dog_card.html:15
-#: .\users\templates\users\include\user_card.html:9
+#: .\users\templates\users\include\user_card.html:10
 msgid "Details"
-msgstr " Подробнее"
+msgstr "Подробнее"
 
-#: .\dogs\views.py:50
+#: .\dogs\views.py:51
 msgid "Add dog"
 msgstr "Добавить собаку"
 
-#: .\dogs\views.py:73
+#: .\dogs\views.py:74
 msgid "Edit dog"
 msgstr "Изменить собаку"
 
-#: .\dogs\views.py:104 .\dogs\views.py:161 .\dogs\views.py:191
+#: .\dogs\views.py:105 .\dogs\views.py:162 .\dogs\views.py:192
 msgid "Dog"
 msgstr "Собака"
 
-#: .\dogs\views.py:217
+#: .\dogs\views.py:218
 msgid "Add comment"
 msgstr "Добавить комментарий"
 
-#: .\dogs\views.py:241
+#: .\dogs\views.py:242
 msgid "Edit comment"
 msgstr "Изменить комментарий"
 
-#: .\security\forms.py:11
+#: .\security\forms.py:15
 msgid "Username or email"
 msgstr "Имя пользователя или почта"
 
-#: .\security\forms.py:20 .\security\forms.py:46
+#: .\security\forms.py:24 .\security\forms.py:52
 msgid "Password"
 msgstr "Пароль"
 
-#: .\security\forms.py:33 .\users\templates\users\user_details.html:26
+#: .\security\forms.py:36 .\users\templates\users\user_details.html:26
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: .\security\forms.py:39 .\security\forms.py:71
+#: .\security\forms.py:42 .\security\forms.py:91
 #: .\users\templates\users\user_details.html:27
 msgid "Email"
 msgstr "Почта"
 
-#: .\security\forms.py:54
+#: .\security\forms.py:48
+msgid "A user with that email already exists."
+msgstr "Пользователь с такой почтой уже существует."
+
+#: .\security\forms.py:60
 msgid "Password confirmation"
 msgstr "Подтверждение пароля"
 
-#: .\security\templates\security\password_reset_complete.html:8
+#: .\security\templates\security\password_reset_complete.html:14
 #: .\security\templates\security\signup.html:22
 msgid "Log in"
 msgstr "Войти"
+
+#: .\security\templates\security\registration_email.html:4
+#, python-format
+msgid ""
+"\n"
+"Please, visit your <a href='%(protocol)s://"
+"%(domain)s%(profile_url)s'>profile</a> to fill your info.\n"
+msgstr ""
+"\n"
+"Пожалуйста, посетите ваш <a href='%(protocol)s://"
+"%(domain)s%(profile_url)s'>профиль</a> для заполнения данных.\n"
 
 #: .\security\templates\security\signin.html:16
 msgid "Forgot password?"
@@ -351,47 +379,47 @@ msgstr "Нет аккаунта?"
 msgid "Already have account?"
 msgstr "Уже зарегистрированы?"
 
-#: .\users\models.py:11 .\users\templates\users\include\sidenav.html:61
+#: .\users\models.py:10 .\users\templates\users\include\sidenav.html:61
 msgid "Admin"
 msgstr "Администратор"
 
-#: .\users\models.py:12 .\users\templates\users\include\sidenav.html:70
+#: .\users\models.py:11 .\users\templates\users\include\sidenav.html:70
 msgid "Moderator"
 msgstr "Модератор"
 
-#: .\users\models.py:13 .\users\templates\users\include\sidenav.html:79
+#: .\users\models.py:12 .\users\templates\users\include\sidenav.html:79
 msgid "User"
 msgstr "Пользователь"
 
-#: .\users\models.py:16 .\users\models.py:44
+#: .\users\models.py:15 .\users\models.py:41
 msgid "role"
 msgstr "роль"
 
-#: .\users\models.py:17
+#: .\users\models.py:16
 msgid "roles"
 msgstr "роли"
 
-#: .\users\models.py:43
+#: .\users\models.py:40
 msgid "email"
 msgstr "почта"
 
-#: .\users\models.py:45
+#: .\users\models.py:42
 msgid "phone"
 msgstr "телефон"
 
-#: .\users\models.py:46
+#: .\users\models.py:43
 msgid "avatar"
 msgstr "аватар"
 
-#: .\users\models.py:51
+#: .\users\models.py:48
 msgid "users"
 msgstr "пользователи"
 
-#: .\users\models.py:118
+#: .\users\models.py:101
 msgid "group"
 msgstr "группа"
 
-#: .\users\models.py:119
+#: .\users\models.py:102
 msgid "groups"
 msgstr "группы"
 
@@ -443,65 +471,3 @@ msgstr "заблокировать"
 #: .\users\templatetags\users\tags.py:24
 msgid "unblock"
 msgstr "разблокировать"
-
-#~ msgid "Photo"
-#~ msgstr "Фото"
-
-#~ msgid "Views"
-#~ msgstr "Просмотры"
-
-#~ msgid "Ancestor"
-#~ msgstr "Предок"
-
-#~ msgid "Are you sure you want to delete the comment?"
-#~ msgstr "Вы уверены, что хотите удалить комментарий?"
-
-#~ msgid "Delete dog"
-#~ msgstr "Удалить собаку"
-
-#~ msgid "Are you sure you want to delete the dog?"
-#~ msgstr "Вы уверены, что хотите удалить собаку?"
-
-#, python-format
-#~ msgid "%(text)s %(object)s"
-#~ msgstr "%(text)s %(object)s"
-
-#, python-format
-#~ msgid "%(text)s"
-#~ msgstr "%(text)s"
-
-#~ msgid "About"
-#~ msgstr "Инфо"
-
-#~ msgid "More"
-#~ msgstr "Подробнее"
-
-#~ msgid "My comments"
-#~ msgstr "Мои комментарии"
-
-#~ msgid "My pets"
-#~ msgstr "Мои питомцы"
-
-#~ msgid "Exit"
-#~ msgstr "Выход"
-
-#~ msgid "Main page"
-#~ msgstr "Главная страница"
-
-#~ msgid "Status"
-#~ msgstr "Статус"
-
-#~ msgid "Role"
-#~ msgstr "Роль"
-
-#~ msgid "Register"
-#~ msgstr "Зарегистрироваться"
-
-#~ msgid "email address"
-#~ msgstr "почта"
-
-#~ msgid "phone number"
-#~ msgstr "номер телефона"
-
-#~ msgid "Parents"
-#~ msgstr "Родители"

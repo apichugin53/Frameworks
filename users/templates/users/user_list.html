@@ -9,12 +9,9 @@
 
 {% block content %}
 
-    <div class="d-flex flex-wrap my-3 gap-3">
+    <div class="d-flex flex-wrap my-3 gap-3 justify-content-center">
         {% for user in object_list %}
-            {% media user.avatar as user_image %}
-            {% with user.get_role_display as details %}
-                {% include 'users/include/user_card.html' with image_url=user_image caption=user.username details=details details_url=user.get_absolute_url%}
-            {% endwith %}
+            {% include 'users/include/user_card.html' with user=user %}
         {% endfor %}
     </div>
 
